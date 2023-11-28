@@ -1,4 +1,11 @@
-@import "node_modules/bootstrap/scss/bootstrap.css";
+@import "./base/layout";
+@import "./components/footer";
+@import "./components/header";
+@import "./components/button";
+@import "./utilities/typography";
+@import "./utilities/variables";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
 * {
   padding: 0;
   margin: 0;

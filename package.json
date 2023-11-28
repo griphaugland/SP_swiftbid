@@ -5,8 +5,8 @@
   "main": "tailwind.config.js",
   "scripts": {
     "test": "test",
-    "sass": "sass src/styles.scss:dist/styles.css",
-    "build": "postcss dist/styles.css -o dist/final.css"
+    "sass": "sass --watch src:dist",
+    "postcss": "postcss dist/styles.css --use autoprefixer -d dist/"
   },
   "author": "griphaugland",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "autoprefixer": "^10.4.16",
     "bootstrap": "^5.3.2",
     "jquery": "^3.7.1",
+    "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
     "sass": "^1.69.5"
   }

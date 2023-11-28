@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwiftBid | Register</title>
+    <script src="../../js/script.js" defer></script>
+    <link rel="stylesheet" href="../../dist/styles.css" />
+    <script src="../../dist/js/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body class="auth-layout">
+    <main>
+      <section class="d-flex items-center justify-center">
+        <div class="d-flex items-center justify-center">
+          <img src="../../media/swiftfox-logo.svg" class="img-fluid" />
+        </div>
+      </section>
+      <section class="d-flex items-center justify-center">
+        <div class="form-container w-100 d-flex align-items-center justify-content-center  ">
+            <form class="needs-validation" action="" novalidate>
+              <p class="md">REGISTER</p>
+
+              <!-- EMAIL -->
+              <div class="input-group has-validation mb-3">
+                <input type="text" class="form-control" id="input-email" aria-describedby="inputGroup" placeholder="Email" required>
+              </div>
+
+              <!-- PASSWORD -->
+              <div class="input-group has-validation position-relative">
+                <input type="password" class="form-control" id="input-password" aria-describedby="inputGroup" minlength="8" placeholder="Password" required>
+              </div>
+
+              <!-- ERRORS -->
+              <div class="res-container position-relative mb-4 mt-2">
+                <div class="position-absolute" id="response"></div>
+              </div>
+
+              <!-- SUBMIT -->
+              <div class="button-container p-4 d-flex justify-content-center">
+                <button type="submit" name="login" class="btn btn-custom d-flex align-items-center justify-content-center">
+                  <img class="img-fluid w-100" src="../media/arrow.svg">
+                </button>
+              </div>
+
+              <!-- LOGIN -->
+              <div class="">
+                <a class="btn" href="../login">LOGIN</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="">
+      <div class="footer-container">
+        <img class="" src="../../media/swiftbid-footer.png" />
+      </div>
+    </footer>
+  </body>
+</html>

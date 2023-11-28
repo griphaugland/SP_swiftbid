@@ -1,4 +1,11 @@
 import { startLoading, stopLoading } from "./loader.mjs";
+import getLocalStorageData from "./localStorage.mjs";
+
+if ((getLocalStorageData("accessToken") !== null) | undefined) {
+  // Sjekk om accessToken finnes
+  // Om ikke, generer pop-up fra loginPopUp.mjs
+  console.log("not logged in");
+}
 
 const button = document.getElementById("login");
 button.addEventListener("click", (e) => {

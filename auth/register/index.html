@@ -14,7 +14,7 @@
     <main>
       <section class="d-flex items-center justify-center">
         <div class="d-flex items-center justify-center">
-          <img src="../../media/swiftfox-logo.svg" class="img-fluid" />
+            <img src="../../media/swiftfox-logo.svg" class="img-fluid" />
         </div>
       </section>
       <section class="d-flex items-center justify-center">
@@ -22,31 +22,33 @@
             <form class="needs-validation" action="" novalidate>
               <p class="md">REGISTER</p>
 
-              <!-- EMAIL -->
-              <div class="input-group has-validation mb-3">
-                <input type="text" class="form-control" id="input-email" aria-describedby="inputGroup" placeholder="Email" required>
+              <!-- NAME -->
+              <div class="input-group has-validation mb-3 position-relative">
+                <input type="text" class="form-control input-name" placeholder="Name" id="validationCustomName" aria-describedby="inputGroup" minlength="2" required>
               </div>
 
-              <!-- PASSWORD -->
-              <div class="input-group has-validation position-relative">
-                <input type="password" class="form-control" id="input-password" aria-describedby="inputGroup" minlength="8" placeholder="Password" required>
+               <!-- EMAIL -->
+              <div class="input-group has-validation mb-3 position-relative">
+                <input type="text" class="form-control input-username" placeholder="Email address" id="validationCustomUsername" aria-describedby="inputGroup" required>
+              </div>
+
+               <!-- PASSWORD -->
+              <div class="input-group has-validation position-relative mb-2">
+                <input type="password" class="form-control input-password" placeholder="Password" id="validationCustomPassword" aria-describedby="inputGroup" minlength="8" required>
               </div>
 
               <!-- ERRORS -->
-              <div class="res-container position-relative mb-4 mt-2">
-                <div class="position-absolute" id="response"></div>
+              <div class="res-container position-relative">
+                <div class="position-absolute m-1" id="response"></div>
               </div>
 
-              <!-- SUBMIT -->
-              <div class="button-container p-4 d-flex justify-content-center">
-                <button type="submit" name="login" class="btn btn-custom d-flex align-items-center justify-content-center">
-                  <img class="img-fluid w-100" src="../media/arrow.svg">
-                </button>
-              </div>
-
-              <!-- LOGIN -->
-              <div class="">
-                <a class="btn" href="../login">LOGIN</a>
+              <div class="button-container d-flex">
+                     <!-- REGISTRER -->
+                    <a class="btn btn-secondary" href="../login">LOGIN</a>
+                           <!-- SUBMIT -->
+                    <button class="btn btn-primary" type="submit" name="register">
+                            REGISTER
+                    </button>
               </div>
             </form>
           </div>

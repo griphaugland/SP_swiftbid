@@ -11,9 +11,7 @@
   background-color: $tertiary;
   font-size: 1rem;
   line-height: 1.5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
@@ -21,13 +19,13 @@
     font-weight: 500;
     background-color: $tertiary;
     color: #09232f;
+    border: 1px solid $tertiary !important;
     &:hover {
       background-color: darken($tertiary, 6%);
       color: lighten(#09232f, 6%) !important;
     }
   }
   &.btn-secondary {
-    font-size: 15px;
     font-weight: 300;
     background-color: $primary;
     color: $subtle;

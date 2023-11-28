@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../dist/styles.css" />
     <script src="../../dist/js/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/modules/register.mjs" type="module"></script>
   </head>
   <body class="auth-layout">
     <main>
@@ -33,20 +34,20 @@
               </div>
 
                <!-- PASSWORD -->
-              <div class="input-group has-validation position-relative mb-2">
+              <div class="input-group has-validation position-relative mb-0">
                 <input type="password" class="form-control input-password" placeholder="Password" id="validationCustomPassword" aria-describedby="inputGroup" minlength="8" required>
               </div>
 
               <!-- ERRORS -->
               <div class="res-container position-relative">
-                <div class="position-absolute m-1" id="response"></div>
+                <div class=" m-1" id="response"></div>
               </div>
 
               <div class="button-container d-flex">
                      <!-- REGISTRER -->
                     <a class="btn btn-secondary" href="../login">LOGIN</a>
                            <!-- SUBMIT -->
-                    <button class="btn btn-primary" type="submit" name="register">
+                    <button class="btn btn-primary" type="submit" id="register" name="register">
                             REGISTER
                     </button>
               </div>

@@ -83,14 +83,26 @@
     border: 1px solid $tertiary;
   }
   .res-container {
-    height: 35px;
     font-size: 14px;
+    min-height: 45px;
+    display: flex;
+    margin-left: 25px;
+    .response-text {
+      color: black;
+      font-weight: 500;
+      width: 100%;
+    }
+    img {
+      position: absolute;
+      margin-right: 0.2rem;
+      left: -20px;
+    }
   }
   .button-container {
     gap: 0.5rem;
     align-items: flex-end;
     justify-content: flex-end;
-    @media (max-width: 350px) {
+    @media (max-width: 300px) {
       width: 100%;
       align-items: flex-start;
       justify-content: flex-start;

@@ -7,6 +7,7 @@
     <title>SwiftBid | LOGIN</title>
     <script src="../../js/script.js" defer></script>
     <link rel="stylesheet" href="../../dist/styles.css" />
+    <script src="../../js/modules/login.mjs" type="module"></script>
     <script src="../../dist/js/popper.min.js"></script>
     <script src="../../dist/js/bootstrap.bundle.min.js"></script>
   </head>
@@ -34,14 +35,14 @@
 
               <!-- ERRORS -->
               <div class="res-container position-relative">
-                <div class="position-absolute m-1" id="response"></div>
+                <div class="m-1" id="response"></div>
               </div>
 
               <div class="button-container d-flex">
                      <!-- REGISTRER -->
                     <a class="btn btn-secondary" href="../register">REGISTER</a>
                            <!-- SUBMIT -->
-                    <button class="btn btn-primary" type="submit" name="login">
+                    <button class="btn btn-primary" id="login" type="submit" name="login">
                             LOGIN
                     </button>
               </div>

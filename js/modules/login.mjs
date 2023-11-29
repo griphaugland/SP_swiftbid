@@ -1,11 +1,4 @@
 import { startLoading, stopLoading } from "./loader.mjs";
-import getLocalStorageData from "./localStorage.mjs";
-
-if ((getLocalStorageData("accessToken") !== null) | undefined) {
-  // Sjekk om accessToken finnes
-  // Om ikke, generer pop-up fra loginPopUp.mjs
-  console.log("not logged in");
-}
 
 const button = document.getElementById("login");
 button.addEventListener("click", (e) => {
@@ -36,6 +29,7 @@ async function login() {
     });
     const data = await res.json();
     localStorage.setItem("profile", JSON.stringify(data));
+    localStorage.setItem("status", "logged-in");
     console.log(data);
     if (data.errors) {
       stopLoading("login");

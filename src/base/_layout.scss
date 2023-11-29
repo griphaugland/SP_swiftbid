@@ -109,4 +109,44 @@
       gap: 16px;
     }
   }
+  .guestbutton-container {
+    display: flex;
+    align-self: flex-end;
+    justify-content: flex-end;
+  }
+  #guestbutton {
+    cursor: pointer;
+    font-size: 10px;
+    color: $subtle;
+    margin-top: 0.4rem;
+    width: fit-content;
+    text-decoration: none !important;
+  }
+}
+.feed-layout {
+  @extend .auth-layout;
+  min-height: 100svh;
+  main {
+    height: 80svh;
+  }
+  footer {
+    height: 10svh;
+  }
+  #credits-container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+  .credits-amount {
+    color: rgb(76, 163, 76);
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 0rem !important;
+  }
+  .credits-label {
+    color: $subtle;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 0rem !important;
+  }
 }

@@ -4,14 +4,93 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SwiftBid | Register</title>
-    <script src="../../js/script.js" defer></script>
+    <title>SwiftBid | Single listings</title>
+    <script src="../../../js/script.mjs" type="module"></script>
     <link rel="stylesheet" href="../../dist/styles.css" />
-    <script src="../../dist/js/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../js/modules/register.mjs" type="module"></script>
+    <script src="../../../dist/js/popper.min.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../js/modules/register.mjs" type="module"></script>
   </head>
   <body class="auth-layout">
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../../feed/">
+            <div class="d-flex items-center justify-center">
+              <img
+                src="../../../media/swiftfox-logo-smaller.svg"
+                class="img-fluid"
+                id="navbar-logo"
+              />
+            </div>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <div class="hamburger d-flex justify-content-end align-items-end">
+              <span class="ham-bar bar-top"></span>
+              <span class="ham-bar bar-mid"></span>
+              <span class="ham-bar bar-bottom"></span>
+            </div>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="../../feed/"
+                  >Feed</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../listings/">Listings</a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <div
+                    class="d-flex items-center justify-center account-image-container"
+                  >
+                    <img
+                      src="../../../media/account-image-placeholder.svg"
+                      class="img-fluid"
+                      id="account-image"
+                    />
+                  </div>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li id="credits-container" class="dropdown-item">Credits:</li>
+                  <li>
+                    <a class="dropdown-item" href="#">My profile</a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" id="logout-button" href="#"
+                      >Log out</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </span>
+          </div>
+        </div>
+      </nav>
+    </header>
     <main>
       <section class="d-flex items-center justify-center">
         <p class="md">SINGLE LISTING</p>

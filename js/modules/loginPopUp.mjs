@@ -1,15 +1,13 @@
-import writeCredits from "./handleLoggedIn.mjs";
+import renderNav from "./handleLoggedIn.mjs";
 
 export default function manageLoggedIn() {
+  renderNav();
   function openLoginPopUp() {
     const localStorageCheck = localStorage.getItem("status");
     if (localStorageCheck === null || undefined) {
       buildLoginPopUp();
     } else if (localStorageCheck === "guest") {
       console.log("Already confirmed guest access");
-    }
-    if (localStorageCheck === "logged-in") {
-      writeCredits();
     }
   }
 

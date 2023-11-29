@@ -141,23 +141,6 @@
 .feed-layout footer {
   height: 10svh;
 }
-.feed-layout #credits-container {
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-}
-.feed-layout .credits-amount {
-  color: rgb(76, 163, 76);
-  font-weight: 500;
-  font-size: 16px;
-  margin-bottom: 0rem !important;
-}
-.feed-layout .credits-label {
-  color: #8c8c8c;
-  font-weight: 500;
-  font-size: 16px;
-  margin-bottom: 0rem !important;
-}
 
 header {
   width: 100%;
@@ -218,7 +201,7 @@ header #credits-container:hover {
   color: inherit !important;
 }
 header #logout-button {
-  color: rgba(239, 79, 79, 0.953) !important;
+  color: #141918;
 }
 header .hamburger {
   display: flex;
@@ -246,6 +229,26 @@ header .ham-bar {
   height: 0.25rem;
   background-color: #333;
   border-radius: 10px;
+}
+header #credits-container {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+header .credits-amount {
+  color: rgb(76, 163, 76);
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 0rem !important;
+}
+header .credits-amount-red {
+  color: rgb(163, 76, 76) !important;
+}
+header .credits-label {
+  color: #8c8c8c;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 0rem !important;
 }
 
 .btn {

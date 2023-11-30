@@ -31,14 +31,17 @@ if (!loggedIn) {
         body: JSON.stringify(user),
       });
       const data = await res.json();
-      localStorage.setItem("profile", JSON.stringify(data));
-      localStorage.setItem("status", "logged-in");
       console.log(data);
       if (data.errors) {
         stopLoading("login");
+        if (data.errors.statusCode === 429) {
+          response.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class="response-text" >Server issues, please try again later.</p>`;
+        }
         response.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class="response-text" > Email or password is incorrect</p>`;
       } else {
         response.innerHTML = `<img height="20" width="20" alt="sucess icon" src="../../media/circle-check-regular.svg"> <p class="response-text" >Logging in</p>`;
+        localStorage.setItem("profile", JSON.stringify(data));
+        localStorage.setItem("status", "logged-in");
         setTimeout(() => {
           stopLoading("login");
           window.location.href = "../../feed";

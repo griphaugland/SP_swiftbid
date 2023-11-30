@@ -136,7 +136,12 @@
   min-height: 100svh;
 }
 .feed-layout main {
-  height: 80svh;
+  min-height: 80svh !important;
+  height: 100% !important;
+  flex-direction: column;
+}
+.feed-layout main section:nth-of-type(1) {
+  margin-top: 0rem;
 }
 .feed-layout footer {
   height: 10svh;
@@ -316,6 +321,48 @@ header .credits-label {
     transform: rotate(360deg);
   }
 }
+.card-container {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 20px !important;
+  justify-content: center !important;
+  height: 100% !important;
+}
+
+.card {
+  width: 200px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  text-align: center !important;
+}
+
+.card img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-bottom: 1px solid #ccc !important;
+  margin-bottom: 16p !important;
+}
+
+.card h3, .card .h3 {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.1em !important;
+}
+
+.card p {
+  color: #555 !important;
+}
+
+.bid-button {
+  background-color: #ff4500 !important;
+  color: white !important;
+  border: none !important;
+  padding: 10px 20px !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
+}
+
 .xs {
   font-size: 0.75rem;
 }

@@ -4,38 +4,89 @@
   gap: 20px !important;
   justify-content: center !important;
   height: 100% !important;
-}
-
-.card {
-  width: 200px !important;
-  border: 1px solid #ccc !important;
-  border-radius: 8px !important;
-  padding: 16px !important;
-  text-align: center !important;
-}
-
-.card img {
-  max-width: 100% !important;
-  height: auto !important;
-  border-bottom: 1px solid #ccc !important;
-  margin-bottom: 16p !important;
-}
-
-.card h3 {
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: 1.1em !important;
-}
-
-.card p {
-  color: #555 !important;
-}
-
-.bid-button {
-  background-color: #ff4500 !important;
-  color: white !important;
-  border: none !important;
-  padding: 10px 20px !important;
-  border-radius: 5px !important;
-  cursor: pointer !important;
+  .card-listing {
+    width: 275px !important;
+    height: 275px !important;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    .card-top-bar {
+      padding-top: 16px !important;
+      padding-inline: 16px !important;
+      .timer-listing {
+        color: #8c8c8c;
+        font-weight: 600;
+        font-size: 16px;
+      }
+      .red {
+        color: #bc3122;
+      }
+      .yellow {
+        color: #e5ca5b;
+      }
+      .green {
+        color: #4caf50;
+      }
+      .red-yellow {
+        color: #e5705b;
+      }
+    }
+    .card-top-bar-placeholder {
+      padding-top: 16px !important;
+      padding-inline: 16px !important;
+      height: 40px;
+      margin-bottom: 1rem !important;
+    }
+    .card-image-container {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      overflow: hidden !important;
+      height: 140px !important;
+      img {
+        width: 100%;
+        height: 100%;
+        border-bottom: 1px solid #ccc !important;
+        margin-bottom: 16p !important;
+        object-fit: cover !important;
+      }
+    }
+    .card-text-container {
+      padding: 16px !important;
+      display: flex !important;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      .title-price-container {
+        h3 {
+          margin: 0 !important;
+          padding: 0 !important;
+          font-size: 14px !important;
+        }
+        p {
+          padding-top: 0.2rem !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          font-size: 24px !important;
+        }
+      }
+      .bid-button {
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ff4500 !important;
+        color: white !important;
+        border: none !important;
+        padding: 10px 20px !important;
+        border-radius: 5px !important;
+        cursor: pointer !important;
+        text-decoration: none !important;
+      }
+    }
+    .card-text-container-placeholder {
+      @extend .card-text-container;
+      height: 84.8px !important;
+    }
+  }
 }

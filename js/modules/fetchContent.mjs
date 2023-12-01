@@ -13,12 +13,10 @@ export default async function fetchContent(typeOfRequest, id) {
   }
   async function getAll() {
     const url = "https://api.noroff.dev/api/v1/auction/listings/";
-    const token = getLocalStorageData("accessToken");
     const res = await fetch(url, {
       method: `GET`,
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
     });
     const data = await res.json();
@@ -27,12 +25,10 @@ export default async function fetchContent(typeOfRequest, id) {
   }
   async function getSingle(id) {
     const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
-    const token = getLocalStorageData("accessToken");
     const res = await fetch(url, {
       method: `GET`,
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
     });
     const data = await res.json();

@@ -1,3 +1,10 @@
+.card-container-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+  .filter-cards {
+    width: 70%;
+  }
+}
 .card-container {
   display: flex !important;
   flex-wrap: wrap !important;

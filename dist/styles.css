@@ -331,6 +331,14 @@ header .credits-label {
     transform: rotate(360deg);
   }
 }
+.card-container-wrapper {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.card-container-wrapper .filter-cards {
+  width: 70%;
+}
+
 .card-container {
   display: flex !important;
   flex-wrap: wrap !important;

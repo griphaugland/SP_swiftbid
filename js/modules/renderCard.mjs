@@ -1,7 +1,7 @@
 import fetchContent from "./fetchContent.mjs";
 export default async function renderCards() {
   const content = await fetchContent("getAll");
-  const slicedContent = content.slice(0, 20);
+  let slicedContent = content.slice(0, 20);
   console.log(slicedContent);
   const container = document.getElementById("card-container");
 
@@ -29,30 +29,38 @@ export function renderCard(item) {
     timeLeft = `Expired`;
     color = "red";
   } else if (difference < 1) {
-    timeLeft = `Any second`;
+    timeLeft = `Any second now`;
     color = "red-yellow";
   } else if (difference < 60) {
     timeLeft = `${Math.floor(difference)} min`;
-    color = "green";
+    color = "yellow";
   } else if (difference < 1440) {
     const hours = Math.floor(difference / 60);
-    const minutes = Math.floor(difference % 60);
-    timeLeft = `${hours} h ${minutes} min`;
+    if (hours < 2) {
+      timeLeft = `${hours} hour`;
+    } else {
+      timeLeft = `${hours} hours`;
+    }
     color = "green";
   } else if (difference < 10080) {
     const days = Math.floor(difference / 60 / 24);
-    const hours = Math.floor(difference / 60) % 24;
-    timeLeft = `${days} d ${hours} h`;
+    if (days < 2) {
+      timeLeft = `${days} day`;
+    } else {
+      timeLeft = `${days} days`;
+    }
     color = "green";
   } else if (difference < 43800) {
     const weeks = Math.floor(difference / 60 / 24 / 7);
-    const days = Math.floor(difference / 60 / 24) % 7;
-    timeLeft = `${weeks} w ${days} d`;
+    if (weeks < 2) {
+      timeLeft = `${weeks} week`;
+    } else {
+      timeLeft = `${weeks} weeks`;
+    }
     color = "green";
   } else {
     const months = Math.floor(difference / 60 / 24 / 30);
-    const days = Math.floor(difference / 60 / 24) % 30;
-    timeLeft = `${months} months, ${days} d`;
+    timeLeft = `${months} months`;
     color = "green";
   }
 
@@ -62,12 +70,22 @@ export function renderCard(item) {
   } else {
     credits = "credits";
   }
+  let media;
+  if (!item.media[0]) {
+    media = "https://fakeimg.pl/275x140/ffffff/ababab?text=No+Image+Found";
+  } else {
+    media = item.media[0];
+  }
+  if (item.media[0] === undefined) {
+    media = "https://fakeimg.pl/275x140/ffffff/ababab?text=No+Image+Found";
+  }
+
   card.innerHTML = `
   <div class="card-top-bar">
     <p class="timer-listing ${color}">${timeLeft}</p>
   </div>
   <div class="card-image-container">
-    <img src="${item.media[0]}" height="100px" width="200px" alt=" Alt text:${item.title}" />
+    <img src="${media}" height="100px" width="200px" alt=" Alt text:${item.title}" />
   </div>
   <div class="card-text-container">
     <div class="title-price-container">
@@ -77,9 +95,5 @@ export function renderCard(item) {
     <a id="card-bid-button" class="bid-button" href="../listings/${item.id}">BID</a>
   </div>
 `;
-  if (!item.media[0]) {
-    item.media[0] =
-      "https://sternbergclinic.com.au/wp-content/uploads/2020/03/placeholder.png";
-  }
   return card;
 }

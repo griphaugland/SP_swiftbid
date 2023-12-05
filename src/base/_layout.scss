@@ -32,7 +32,7 @@
       }
     }
     @media (min-width: 1000px) {
-      gap: 5rem;
+      gap: 3rem;
     }
   }
   footer {
@@ -130,12 +130,20 @@
     min-height: 80svh !important;
     height: 100% !important;
     flex-direction: column;
+    section {
+      align-self: center;
+      h6 {
+        font-size: 16px !important;
+        color: $subtle;
+        font-family: "Roboto", sans-serif;
+        font-weight: 500;
+      }
+    }
     section:nth-of-type(1) {
       margin-top: 0rem;
     }
     section:nth-of-type(2) {
       height: 100% !important;
-      align-self: center;
       .card-container {
         display: flex;
         flex-wrap: wrap;

@@ -2,7 +2,9 @@
   display: flex !important;
   flex-direction: column !important;
   .filter-cards {
-    width: 70%;
+    width: 100%;
+    max-width: 1200px;
+    padding: 1.2rem;
   }
 }
 .card-container {
@@ -11,6 +13,7 @@
   gap: 20px !important;
   justify-content: center !important;
   height: 100% !important;
+  max-width: 1200px;
   .card-listing {
     width: 275px !important;
     height: 275px !important;
@@ -28,7 +31,7 @@
         color: #bc3122;
       }
       .yellow {
-        color: #e5ca5b;
+        color: #f8c809;
       }
       .green {
         color: #4caf50;
@@ -53,7 +56,6 @@
       img {
         width: 100%;
         height: 100%;
-        border-bottom: 1px solid #ccc !important;
         margin-bottom: 16p !important;
         object-fit: cover !important;
       }

@@ -1,7 +1,5 @@
 import manageLoggedIn from "./modules/loginPopUp.mjs";
 import logout from "./modules/logout.mjs";
-import renderCards from "./modules/renderCard.mjs";
-import renderPlaceholderCards from "./modules/renderPlaceholderCards.mjs";
 
 const hamBars = document.querySelectorAll(".ham-bar");
 document
@@ -26,5 +24,3 @@ logoutBtn.addEventListener("click", () => {
 });
 
 manageLoggedIn();
-renderPlaceholderCards();
-renderCards();

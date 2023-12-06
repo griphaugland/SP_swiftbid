@@ -46,7 +46,7 @@ export function updateCardWithMedia(item, media, container) {
     const hours = Math.floor(difference / 60);
     if (hours < 2) {
       timeLeft = `
-      ${hours} hour`;
+        ${hours} hour`;
     } else {
       timeLeft = `${hours} hours`;
     }

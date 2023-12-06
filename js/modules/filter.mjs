@@ -5,19 +5,17 @@ export async function renderCategories() {
   const Popular = await fetchContent("getAllActiveDesc");
   const slicedEndingSoon = endingSoon.slice(0, 4);
   const slicedPopular = Popular.slice(0, 4);
-  console.log(Popular);
   const category1 = document.getElementById("card-container-category1");
   const category2 = document.getElementById("card-container-category2");
-  console.log("running");
   if (slicedPopular && slicedEndingSoon) {
-    // Clear previous content
     category1.innerHTML = "";
     category2.innerHTML = "";
-    slicedEndingSoon.forEach((item) => {
-      category1.appendChild(renderCard(item));
-    });
-    slicedPopular.forEach((item) => {
-      category2.appendChild(renderCard(item));
-    });
+
+    for (const item of slicedEndingSoon) {
+      await renderCard(item, category1);
+    }
+    for (const item of slicedPopular) {
+      await renderCard(item, category2);
+    }
   }
 }

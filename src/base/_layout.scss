@@ -12,7 +12,6 @@
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
-    justify-content: center;
     gap: 0rem;
     @media (max-width: 717px) {
       flex-direction: column;
@@ -124,6 +123,13 @@
   }
 }
 .feed-layout {
+  position: static;
+  .error-message-container {
+    position: absolute;
+    top: 50%;
+    background-color: $primary;
+    border: 2px solid $tertiary;
+  }
   @extend .auth-layout;
   min-height: 100svh;
   main {
@@ -131,6 +137,49 @@
     height: 100% !important;
     flex-direction: column;
     section {
+      #search-form {
+        display: flex;
+        #search-button {
+          min-width: 85px;
+        }
+        .btn-search {
+          border: 1px solid #8c8c8c !important;
+          border-radius: 0px 20px 20px 0px !important;
+          font-size: 14px;
+          svg {
+            color: $tertiary !important;
+          }
+        }
+        #search-button:hover {
+          border: 1px solid $tertiary !important;
+        }
+      }
+      .form-control-search {
+        @extend .form-control;
+        border-radius: 20px 0px 0px 20px !important;
+        padding: 0.5rem 1rem !important;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        :focus {
+          box-shadow: 5 2px 3px rgba(0, 0, 0, 0.1) !important;
+        }
+        :active {
+          box-shadow: 5 2px 3px rgba(0, 0, 0, 0.1) !important;
+        }
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--bs-body-color);
+        appearance: none;
+        border-right: none !important;
+        background-color: var(--bs-body-bg);
+        background-clip: padding-box;
+        border: var(--bs-border-width) solid var(--bs-border-color);
+        border-radius: var(--bs-border-radius);
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
       align-self: center;
       h6 {
         font-size: 16px !important;

@@ -18,7 +18,8 @@ export default async function fetchContent(typeOfRequest, id) {
     return console.log("Please add your request type as a parameter");
   }
   async function getAll() {
-    const url = "https://api.noroff.dev/api/v1/auction/listings/";
+    const url =
+      "https://api.noroff.dev/api/v1/auction/listings?_bids=true&_active=true";
     const res = await fetch(url, {
       method: `GET`,
       headers: {
@@ -29,6 +30,7 @@ export default async function fetchContent(typeOfRequest, id) {
     checkForErrors(data);
     return data;
   }
+
   async function getSingle(id) {
     const url = `https://api.noroff.dev/api/v1/auction/listings/${id}`;
     const res = await fetch(url, {
@@ -42,7 +44,7 @@ export default async function fetchContent(typeOfRequest, id) {
     return data;
   }
   async function getAllActiveAsc() {
-    const url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=asc`;
+    const url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=asc&_bids=true`;
     const res = await fetch(url, {
       method: `GET`,
       headers: {
@@ -50,11 +52,12 @@ export default async function fetchContent(typeOfRequest, id) {
       },
     });
     const data = await res.json();
+    console.log(data);
     checkForErrors(data);
     return data;
   }
   async function getAllActiveDesc() {
-    const url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=desc`;
+    const url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=desc&_bids=true`;
     const res = await fetch(url, {
       method: `GET`,
       headers: {
@@ -62,6 +65,7 @@ export default async function fetchContent(typeOfRequest, id) {
       },
     });
     const data = await res.json();
+    console.log(data);
     checkForErrors(data);
     return data;
   }

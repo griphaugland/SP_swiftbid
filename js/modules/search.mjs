@@ -28,6 +28,8 @@ function triggerSearchFromURL() {
     let searchValue = params.get("search");
     searchInput.value = searchValue; // Use value for input fields
     renderSearchResults(searchValue);
+  } else {
+    console.log("no search value found");
   }
 }
 

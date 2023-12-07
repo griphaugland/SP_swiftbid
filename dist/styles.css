@@ -130,7 +130,6 @@
   border: 2px solid #fd6a01;
 }
 .feed-layout main {
-  gap: 1.5rem;
   padding-inline: 1rem;
   min-height: 80svh !important;
   height: 100% !important;
@@ -160,7 +159,6 @@
 }
 .feed-layout main .page-subtitle-feed {
   color: #8c8c8c;
-  padding-top: 2rem;
   padding-bottom: 0.5rem;
 }
 .feed-layout main section #search-form {
@@ -213,9 +211,29 @@
   font-weight: 500;
 }
 .feed-layout main section:nth-of-type(1) {
-  margin-top: 0rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
   min-width: none !important;
   height: 100% !important;
+  padding-inline: 1rem;
+}
+@media (max-width: 900px) {
+  .feed-layout main section:nth-of-type(1) {
+    flex-direction: column;
+  }
+}
+.feed-layout main section:nth-of-type(1) .welcome-text {
+  font-size: 16px;
+  left: 1rem;
+  font-weight: 300;
+}
+.feed-layout main section:nth-of-type(1) .welcome-text h5, .feed-layout main section:nth-of-type(1) .welcome-text .h5 {
+  font-family: "Syncopate", sans-serif;
+  color: #141918;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 .feed-layout main section:nth-of-type(2) {
   height: 100% !important;

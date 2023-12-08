@@ -284,14 +284,28 @@
 }
 
 #listing-containers {
+  width: 100% !important;
+  height: 100%;
   display: flex;
-  background: #ffffff;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+@media (max-width: 717px) {
+  #listing-containers {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100% !important;
+    height: 100%;
+    gap: 1rem;
+  }
 }
 
 .container-imageAndBid {
   display: flex;
   margin: 20px;
+  min-width: 300px;
 }
 
 .container-image {
@@ -301,26 +315,66 @@
 .container-titleBidsPrice {
   display: flex;
   flex-direction: column;
+  min-width: 300px;
+  position: relative;
 }
 
-.container-title,
-.container-bids,
 .container-price {
-  padding: 10px 0;
+  padding-inline: 0.7rem;
+  padding-block: 0.3rem;
+  background-color: #575757;
+  color: #ffffff;
+  position: sticky;
+  min-width: 300px;
+}
+@media (min-width: 717px) {
+  .container-price {
+    min-width: 500px;
+  }
 }
 
 #bids-list {
   list-style-type: none;
   padding: 0;
+  max-height: 150px;
+  overflow-y: scroll;
+  margin-bottom: 0rem;
+}
+@media (min-width: 717px) {
+  #bids-list {
+    min-width: 500px;
+  }
 }
 
 #bids-list li {
-  margin-bottom: 5px;
+  padding-inline: 0.7rem;
+  padding-block: 0.3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#bids-list li p {
+  color: #808080;
+  margin-bottom: 0rem;
+}
+
+#bids-list li a {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 100%;
+  color: #141918;
+  text-decoration: none;
+}
+
+#bids-list li:nth-child(2n+1) {
+  background-color: #f5f5f5;
 }
 
 .bid-input {
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .btn-minus,
@@ -341,6 +395,23 @@
 
 .btn-bid {
   background-color: #28a745;
+}
+
+#listing-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0rem !important;
+}
+
+.previous-bids-profile-link {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.previous-bids-and-price-container {
+  border: 2px solid #fd6a01;
 }
 
 header {

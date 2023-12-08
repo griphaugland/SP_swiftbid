@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Single Listing | SwiftBid</title>
+    <script src="../../../js/script.mjs" type="module"></script>
+    <link rel="stylesheet" href="../../dist/styles.css" />
+    <script src="../../../dist/js/popper.min.js"></script>
+    <script src="../../../dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/singleListing.mjs" type="module"></script>
+  </head>
+  <body class="auth-layout">
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../../feed/">
+            <div class="d-flex items-center justify-center">
+              <img
+                src="../../../media/swiftfox-logo-smaller.svg"
+                class="img-fluid"
+                id="navbar-logo"
+              />
+            </div>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <div class="hamburger d-flex justify-content-end align-items-end">
+              <span class="ham-bar bar-top"></span>
+              <span class="ham-bar bar-mid"></span>
+              <span class="ham-bar bar-bottom"></span>
+            </div>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="../../feed/">Feed</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="../../listings/"
+                  >Listings</a
+                >
+              </li>
+            </ul>
+            <span class="navbar-text">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <div
+                    class="d-flex items-center justify-center account-image-container"
+                  >
+                    <img
+                      src="../../../media/account-image-placeholder.svg"
+                      class="img-fluid"
+                      id="account-image"
+                    />
+                  </div>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li id="credits-container" class="dropdown-item">Credits:</li>
+                  <li>
+                    <a class="dropdown-item" href="../../profile/">Profile</a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      id="logout-button"
+                      href="../../auth/login/"
+                      >Log out</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </span>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="single-listing-section d-flex">
+        <div id="listing-containers">
+          <div class="container-imageAndBid">
+            <div class="container-image">
+              <img
+                src="https://fakeimg.pl/275x140/ffffff/ababab?text=No+Image+Found"
+                class="img-fluid"
+                id="listing-image"
+              />
+              <!-- Bid Input -->
+              <div class="bid-input">
+                <button class="btn-minus">-</button>
+                <input type="text" value="$26" class="input-bid" />
+                <button class="btn-plus">+</button>
+                <button class="btn-bid">BID</button>
+              </div>
+            </div>
+            <div class="container-titleBidsPrice">
+              <div class="container-title">
+                <h1 id="listing-title">BaByLiss Salon Pro</h1>
+              </div>
+              <div class="container-bidsPrice">
+                <div class="container-bids">
+                  <h2 id="listing-bids">Time remaining: 2 h 22 min</h2>
+                  <!-- Bids List -->
+                  <ul id="bids-list">
+                    <li>herman234: $165</li>
+                    <li>jens_stolt: $205</li>
+                    <li>time_kleve: $215</li>
+                    <!-- More bids -->
+                  </ul>
+                </div>
+                <div class="container-price">
+                  <h2 id="listing-price">Highest bid: $255</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="">
+      <div class="footer-container">
+        <img class="" src="../../media/swiftbid-footer.png" />
+      </div>
+    </footer>
+  </body>
+</html>

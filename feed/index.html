@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feed | SwiftBid</title>
+    <script src="../js/script.mjs" type="module"></script>
+    <link rel="stylesheet" href="../dist/styles.css" />
+    <script src="../dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../dist/js/popper.min.js"></script>
+    <script src="../js/feed.js" type="module"></script>
+  </head>
+  <body class="feed-layout">
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../feed/">
+            <div class="d-flex items-center justify-center">
+              <img
+                src="../../media/swiftfox-logo-smaller.svg"
+                class="img-fluid"
+                id="navbar-logo"
+              />
+            </div>
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <div
+              class="hamburger d-flex justify-content-center align-items-center"
+            >
+              <span class="ham-bar bar-top"></span>
+              <span class="ham-bar bar-mid"></span>
+              <span class="ham-bar bar-bottom"></span>
+            </div>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../feed/"
+                  >Feed</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../listings/">Listings</a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <div
+                    class="d-flex items-center justify-center account-image-container"
+                  >
+                    <img
+                      src="../../media/account-image-placeholder.svg"
+                      class="img-fluid"
+                      id="account-image"
+                    />
+                  </div>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li id="credits-container" class="dropdown-item"></li>
+                  <li>
+                    <a class="dropdown-item" href="../profile/">Profile</a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li>
+                    <a class="dropdown-item" id="logout-button" href="#"
+                      >Log out</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </span>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="d-flex top-section w-100 pb-4">
+        <div class="welcome-text">
+          <div>Welcome to</div>
+          <h5>SWIFTBID</h5>
+        </div>
+        <form class="search-bar" id="search-form">
+          <input
+            type="text"
+            class="form-control form-control-search"
+            placeholder="Search for an item"
+            id="search-input"
+            aria-label="Search for an item"
+            aria-describedby="search-button"
+          />
+          <button class="btn btn-search" type="submit" id="search-button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="16"
+              width="16"
+              viewBox="0 0 512 512"
+            >
+              <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+              <path
+                opacity="1"
+                fill="#141918"
+                d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"
+              />
+            </svg>
+          </button>
+        </form>
+      </section>
+      <h6 class="text-start page-subtitle page-subtitle-feed">ENDING SOON</h6>
+      <section class="card-container-wrapper pb-4">
+        <div id="card-container-category1" class="card-container category">
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder"></div>
+            <div class="card-image-container placeholder-image">
+              <div
+                class="spinner-container w-100 d-flex align-items-center justify-content-center h-25"
+              >
+                <div class="spinner">
+                  <div class="dot1"></div>
+                  <div class="dot2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#"
+                ><img
+                  src="../media/hand-sparkles-solid.svg"
+                  height="35px"
+                  width="55px"
+                  alt="Hand icon"
+              /></a>
+            </div>
+          </div>
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder"></div>
+            <div class="card-image-container placeholder-image">
+              <div
+                class="spinner-container w-100 d-flex align-items-center justify-content-center h-25"
+              >
+                <div class="spinner">
+                  <div class="dot1"></div>
+                  <div class="dot2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#"
+                ><img
+                  src="../media/hand-sparkles-solid.svg"
+                  height="35px"
+                  width="55px"
+                  alt="Hand icon"
+              /></a>
+            </div>
+          </div>
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder"></div>
+            <div class="card-image-container placeholder-image">
+              <div
+                class="spinner-container w-100 d-flex align-items-center justify-content-center h-25"
+              >
+                <div class="spinner">
+                  <div class="dot1"></div>
+                  <div class="dot2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#"
+                ><img
+                  src="../media/hand-sparkles-solid.svg"
+                  height="35px"
+                  width="55px"
+                  alt="Hand icon"
+              /></a>
+            </div>
+          </div>
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder"></div>
+            <div class="card-image-container placeholder-image">
+              <div
+                class="spinner-container w-100 d-flex align-items-center justify-content-center h-25"
+              >
+                <div class="spinner">
+                  <div class="dot1"></div>
+                  <div class="dot2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#"
+                ><img
+                  src="../media/hand-sparkles-solid.svg"
+                  height="35px"
+                  width="55px"
+                  alt="Hand icon"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <h6 class="text-start page-subtitle page-subtitle-feed">
+        RECENTLY LISTED
+      </h6>
+      <section class="card-container-wrapper">
+        <div id="card-container-category2" class="card-container category">
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder"></div>
+            <div class="card-image-container placeholder-image">
+              <div
+                class="spinner-container w-100 d-flex align-items-center justify-content-center h-25"
+              >
+                <div class="spinner">
+                  <div class="dot1"></div>
+                  <div class="dot2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#"
+                ><img
+                  src="../media/hand-sparkles-solid.svg"
+                  height="35px"
+                  width="55px"
+                  alt="Hand icon"
+              /></a>
+            </div>
+          </div>
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder"></div>
+            <div class="card-image-container placeholder-image">
+              <div
+                class="spinner-container w-100 d-flex align-items-center justify-content-center h-25"
+              >
+                <div class="spinner">
+                  <div class="dot1"></div>
+                  <div class="dot2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#"
+                ><img
+                  src="../media/hand-sparkles-solid.svg"
+                  height="35px"
+                  width="55px"
+                  alt="Hand icon"
+              /></a>
+            </div>
+          </div>
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder"></div>
+            <div class="card-image-container placeholder-image">
+              <div
+                class="spinner-container w-100 d-flex align-items-center justify-content-center h-25"
+              >
+                <div class="spinner">
+                  <div class="dot1"></div>
+                  <div class="dot2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#"
+                ><img
+                  src="../media/hand-sparkles-solid.svg"
+                  height="35px"
+                  width="55px"
+                  alt="Hand icon"
+              /></a>
+            </div>
+          </div>
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder"></div>
+            <div class="card-image-container placeholder-image">
+              <div
+                class="spinner-container w-100 d-flex align-items-center justify-content-center h-25"
+              >
+                <div class="spinner">
+                  <div class="dot1"></div>
+                  <div class="dot2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#"
+                ><img
+                  src="../media/hand-sparkles-solid.svg"
+                  height="35px"
+                  width="55px"
+                  alt="Hand icon"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="">
+      <div class="footer-container">
+        <img class="" src="../media/swiftbid-footer.png" />
+      </div>
+    </footer>
+  </body>
+</html>

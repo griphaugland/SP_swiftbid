@@ -1,0 +1,38 @@
+@import "../utilities/variables";
+
+.btn {
+  border-color: none !important;
+  outline: none !important;
+  padding-block: 8px;
+  height: 40px;
+  width: 110px;
+  border-radius: 5px;
+  border: none;
+  background-color: $tertiary;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  &.btn-primary {
+    font-weight: 500;
+    background-color: $tertiary;
+    color: #09232f;
+    border: 1px solid $tertiary !important;
+    &:hover {
+      background-color: darken($tertiary, 6%);
+      color: lighten(#09232f, 6%) !important;
+    }
+  }
+  &.btn-secondary {
+    font-weight: 300;
+    background-color: $primary;
+    color: $subtle;
+    border: 1px solid $subtle !important;
+    &:hover {
+      background-color: darken($primary, 6%) !important;
+      color: lighten($subtle, 6%) !important;
+    }
+  }
+}

@@ -263,6 +263,9 @@
     }
   }
 }
+.single-listing-main {
+  height: 60svh !important;
+}
 .single-listing-section {
   display: flex;
   align-items: center;
@@ -285,6 +288,10 @@
     height: 100%;
     gap: 1rem;
   }
+  @media (max-width: 1005px) {
+    flex-direction: column;
+    gap: 3rem;
+  }
 }
 
 .container-imageAndBid {
@@ -294,7 +301,10 @@
 }
 
 .container-image {
-  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  position: relative;
 }
 
 .container-titleBidsPrice {
@@ -326,6 +336,8 @@
   max-height: 150px;
   overflow-y: scroll;
   margin-bottom: 0rem;
+  display: flex;
+  flex-direction: column-reverse;
   @media (min-width: 717px) {
     min-width: 500px;
   }
@@ -336,6 +348,7 @@
   padding-block: 0.3rem;
   display: flex;
   justify-content: space-between;
+  color: $subtle;
 }
 #bids-list li p {
   color: #808080;
@@ -358,16 +371,19 @@
   align-items: center;
   flex-direction: column;
 }
+.btn-change-container {
+  display: flex;
+  padding: 1rem;
+}
 
 .btn-minus,
 .btn-plus,
 .btn-bid {
   padding: 5px 10px;
   margin: 5px;
-  background-color: #007bff;
-  color: white;
   border: none;
   cursor: pointer;
+  background-color: white;
 }
 
 .input-bid {
@@ -389,7 +405,16 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  text-decoration: none;
 }
 .previous-bids-and-price-container {
   border: 2px solid $tertiary;
+}
+#sendBidBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  width: 100%;
+  height: 100%;
 }

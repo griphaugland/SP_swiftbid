@@ -1,4 +1,4 @@
-import { renderCategories } from "./modules/filter.mjs";
+import { renderCategories } from "./modules/renderCategories.mjs";
 
 renderCategories();
 

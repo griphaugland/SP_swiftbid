@@ -1,5 +1,14 @@
 @import "../utilities/variables";
 
+.login-main,
+.register-main {
+  justify-content: center !important;
+  gap: 5rem !important;
+  @media (max-width: 717px) {
+    gap: 0rem !important;
+  }
+}
+
 .auth-layout {
   min-height: 100svh;
   background-color: $primary;
@@ -347,6 +356,9 @@
   @media (min-width: 717px) {
   }
 }
+#bids-list li:last-of-type {
+  font-weight: bold;
+}
 
 #bids-list li {
   padding-inline: 0.7rem;
@@ -435,7 +447,7 @@
 #listing-bids {
   display: flex;
   justify-content: space-between;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 .red {
   color: #bc3122;
@@ -459,7 +471,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 .single-listing-main section:nth-of-type(1) {
   margin-top: 0rem !important;
@@ -473,4 +485,23 @@
 .container-bidsPrice {
   max-width: 500px;
   align-self: center;
+}
+#continueAsGuest {
+  width: 200px;
+}
+.listing-owner-name {
+  color: $tertiary;
+  text-decoration: none;
+}
+#listing-owner {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.listing-owner-name:hover {
+  color: lighten($tertiary, 6%) !important;
+}
+#listing-bids br {
+  display: none;
 }

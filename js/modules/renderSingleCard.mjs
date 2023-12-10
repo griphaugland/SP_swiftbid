@@ -74,10 +74,13 @@ export function updateCardWithMedia(item, media, container) {
     color = "green";
   } else {
     const months = Math.floor(difference / 60 / 24 / 30);
-    timeLeft = `${months} months`;
+    if (months < 2) {
+      timeLeft = `${months} month`;
+    } else {
+      timeLeft = `${months} months`;
+    }
     color = "green";
   }
-
   let credits = item._count.bids === 1 ? "credit" : "credits";
 
   function getHighestAmount() {
@@ -129,20 +132,31 @@ export function updateCardWithMedia(item, media, container) {
   listingTitlePriceContainer.innerHTML = "";
   listingTitlePriceContainer.append(listingTitlePrice, listingTitlePriceValue);
   listingTitle.append(listingTitleName);
+
   const timeRemainingValue = document.createElement("span");
   const timeRemainingDescription = document.createElement("span");
-  timeRemainingDescription.innerText = "Auction ends: ";
-  timeRemainingValue.innerText = `${timeLeft}`;
-  timeRemainingValue.classList.add(`${color}`);
+  timeRemainingDescription.innerText = "Auction ends:";
+  timeRemainingValue.innerText = timeLeft;
+  timeRemainingValue.classList.add(color);
   timeRemaining.innerHTML = "";
   timeRemaining.append(timeRemainingDescription, timeRemainingValue);
 
   const highestBidContainerValue = document.createElement("span");
   const highestBidContainerDesc = document.createElement("span");
   highestBidContainerDesc.innerText = "Highest bid:";
-  highestBidContainerValue.innerText = `${price} credits`;
+  highestBidContainerValue.innerText = `${price} ${credits}`;
   listingPrice.innerHTML = "";
   listingPrice.append(highestBidContainerDesc, highestBidContainerValue);
+
+  const listingOwnerContainer = document.getElementById("listing-owner");
+  const listingOwner = document.createElement("a");
+  const listingOwnerPrefix = document.createElement("span");
+  listingOwner.innerText = `${item.seller.name}`;
+  listingOwner.classList.add("listing-owner-name");
+  listingOwner.href = `../../profile?user=${item.seller.name}`;
+  listingOwnerPrefix.innerText = "Posted by:";
+  listingOwnerContainer.innerHTML = "";
+  listingOwnerContainer.append(listingOwnerPrefix, listingOwner);
 
   // Input Logic
   const bidPlus = document.querySelector(".btn-plus");
@@ -181,7 +195,7 @@ export function updateCardWithMedia(item, media, container) {
       let listItem = document.createElement("li");
       let bidderName = document.createElement("a");
       bidderName.innerText = item.bidderName;
-      bidderName.href = `../profile?user=${item.bidderName}`;
+      bidderName.href = `../../profile?user=${item.bidderName}`;
       let bidderAmount = document.createElement("span");
       bidderAmount.innerText = `${item.amount}`;
       listItem.append(bidderName, bidderAmount);

@@ -1,5 +1,17 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Syncopate:wght@400;700&display=swap");
+.login-main,
+.register-main {
+  justify-content: center !important;
+  gap: 5rem !important;
+}
+@media (max-width: 717px) {
+  .login-main,
+  .register-main {
+    gap: 0rem !important;
+  }
+}
+
 .auth-layout, .feed-layout {
   min-height: 100svh;
   background-color: #ffffff;
@@ -358,6 +370,10 @@
   display: flex;
   flex-direction: column-reverse;
 }
+#bids-list li:last-of-type {
+  font-weight: bold;
+}
+
 #bids-list li {
   padding-inline: 0.7rem;
   padding-block: 0.3rem;
@@ -454,7 +470,7 @@
 #listing-bids {
   display: flex;
   justify-content: space-between;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .red {
@@ -484,7 +500,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .single-listing-main section:nth-of-type(1) {
@@ -503,6 +519,30 @@
 .container-bidsPrice {
   max-width: 500px;
   align-self: center;
+}
+
+#continueAsGuest {
+  width: 200px;
+}
+
+.listing-owner-name {
+  color: #fd6a01;
+  text-decoration: none;
+}
+
+#listing-owner {
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.listing-owner-name:hover {
+  color: #fe7c1e !important;
+}
+
+#listing-bids br {
+  display: none;
 }
 
 header {
@@ -824,6 +864,11 @@ header .credits-label {
 }
 #card-bid-button img:hover {
   transform: scale(1.02);
+}
+
+.filter-cards {
+  color: #8c8c8c;
+  font-weight: 500;
 }
 
 .xs {

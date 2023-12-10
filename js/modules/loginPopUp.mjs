@@ -13,6 +13,12 @@ export default function manageLoggedIn() {
 
   function buildLoginPopUp() {
     const modalContainer = document.createElement("div");
+    let path;
+    if (window.location.pathname === "/listings/listing/") {
+      path = "../../auth/login";
+    } else {
+      path = "../auth/login";
+    }
     modalContainer.innerHTML = `
         <div class="modal fade" id="wantToLogIn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -26,7 +32,7 @@ export default function manageLoggedIn() {
                     </div>
                     <div class="modal-footer">
                     <button type="button" id="continueAsGuest" class="btn btn-secondary" data-bs-dismiss="modal">CONTINUE AS GUEST</button>
-                        <a type="button" href="../auth/login" class="btn btn-primary">LOGIN</a>
+                        <a type="button" href="${path}" class="btn btn-primary">LOGIN</a>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,7 @@
 import fetchContent from "./fetchContent.mjs";
+import getLocalStorageData from "./localStorage.mjs";
+import isLoggedIn from "./isLoggedIn.mjs";
+import placeBid from "./placeBid.mjs";
 const container = document.getElementById("listing-container");
 const image = document.getElementById("listing-image");
 const timeRemaining = document.getElementById("listing-bids");
@@ -6,6 +9,17 @@ const priceContainer = document.querySelectorAll("previous-bids-profile-link");
 const listingTitle = document.getElementById("listing-title");
 const listingPrice = document.getElementById("listing-price");
 const bidsList = document.getElementById("bids-list");
+const bidButton = document.getElementById("sendBidBtn");
+let accessToken;
+
+if (isLoggedIn()) {
+  bidButton.disabled = false;
+  accessToken = getLocalStorageData("accessToken");
+} else {
+  accessToken = null;
+  bidButton.disabled = true;
+  bidButton.innerText = "Log in to bid";
+}
 
 export function isValidImageSrc(src, callback) {
   let img = new Image();
@@ -13,7 +27,6 @@ export function isValidImageSrc(src, callback) {
   img.onerror = () => callback(false);
   img.src = src;
 }
-
 export function updateCardWithMedia(item, media, container) {
   const hourglass = "../../media/hourglass-half-regular.svg";
   const hand = "../../media/hand-sparkles-solid.svg";
@@ -76,10 +89,9 @@ export function updateCardWithMedia(item, media, container) {
     return currentPrice;
   }
   const price = getHighestAmount();
-  // Create card element
+
   card.className = "card-listing";
 
-  // Create and append the top bar
   const topBar = document.createElement("div");
   topBar.className = "card-top-bar";
 
@@ -103,11 +115,23 @@ export function updateCardWithMedia(item, media, container) {
   imageContainer.className = "card-image-container";
 
   image.src = media;
-
-  listingTitle.innerText = `${item.title}`;
+  listingTitle.innerHTML = "";
+  const listingTitleName = document.createElement("span");
+  listingTitleName.innerText = item.title;
+  const listingTitlePrice = document.createElement("span");
+  const listingTitlePriceValue = document.createElement("span");
+  listingTitlePriceValue.innerText = price;
+  listingTitlePriceValue.classList.add("green");
+  listingTitlePrice.innerText = "Current highest bid:";
+  const listingTitlePriceContainer = document.getElementById(
+    "listing-title-price-container"
+  );
+  listingTitlePriceContainer.innerHTML = "";
+  listingTitlePriceContainer.append(listingTitlePrice, listingTitlePriceValue);
+  listingTitle.append(listingTitleName);
   const timeRemainingValue = document.createElement("span");
   const timeRemainingDescription = document.createElement("span");
-  timeRemainingDescription.innerText = "Auction ends in: ";
+  timeRemainingDescription.innerText = "Auction ends: ";
   timeRemainingValue.innerText = `${timeLeft}`;
   timeRemainingValue.classList.add(`${color}`);
   timeRemaining.innerHTML = "";
@@ -119,6 +143,30 @@ export function updateCardWithMedia(item, media, container) {
   highestBidContainerValue.innerText = `${price} credits`;
   listingPrice.innerHTML = "";
   listingPrice.append(highestBidContainerDesc, highestBidContainerValue);
+
+  // Input Logic
+  const bidPlus = document.querySelector(".btn-plus");
+  const bidMinus = document.querySelector(".btn-minus");
+  const bidInput = document.querySelector(".input-bid");
+  bidInput.value = price + 1;
+  bidInput.addEventListener("change", () => {
+    if (bidInput.value < price + 1) {
+      bidInput.value = price + 1;
+    }
+  });
+  bidPlus.addEventListener("click", () => {
+    bidInput.value++;
+    if (bidInput.value < price + 1) {
+      bidInput.value = price + 1;
+    }
+  });
+  bidMinus.addEventListener("click", () => {
+    bidInput.value--;
+    if (bidInput.value < price + 1) {
+      bidInput.value = price + 1;
+    }
+  });
+  bidButton.onclick = () => placeBid(item.id, bidInput.value, accessToken);
 
   // render bid overview
   function getBidInformation() {
@@ -149,7 +197,7 @@ export function renderSingleCard(item, container) {
     if (!item.media[0]) {
       updateCardWithMedia(
         item,
-        "https://fakeimg.pl/275x140/ffffff/ababab?text=No+Image+Found",
+        "https://fakeimg.pl/500x400/ffffff/ababab?text=No+Image+Found",
         container
       );
       resolve();
@@ -159,7 +207,7 @@ export function renderSingleCard(item, container) {
         if (isValid) {
           media = item.media[0];
         } else {
-          media = "https://fakeimg.pl/275x140/ffffff/ababab?text=Invalid+Image";
+          media = "https://fakeimg.pl/500x400/ffffff/ababab?text=Invalid+Image";
         }
         updateCardWithMedia(item, media, container);
         resolve();

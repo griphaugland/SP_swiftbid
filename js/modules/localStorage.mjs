@@ -19,4 +19,7 @@ export default function getLocalStorageData(value) {
   if (value === "accessToken") {
     return parsedData.accessToken;
   }
+  if (parsedData === null) {
+    return;
+  }
 }

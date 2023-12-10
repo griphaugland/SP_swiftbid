@@ -100,11 +100,20 @@
           <div class="container-imageAndBid">
             <div class="container-image">
               <img
-                src="https://fakeimg.pl/275x140/ffffff/ababab?text=No+Image+Found"
+                src="https://fakeimg.pl/500x400/ffffff/ababab?text=Loading"
                 class="img-fluid"
                 id="listing-image"
               />
               <!-- Bid Input -->
+            </div>
+          </div>
+          <div class="container-titleBidsPrice">
+            <div class="container-title">
+              <h1 id="listing-title"></h1>
+              <h2 id="listing-bids">Auction ends:</h2>
+              <h2 id="listing-title-price-container">Current highest bid:</h2>
+            </div>
+            <div class="container-bidsPrice">
               <div class="bid-input">
                 <div class="btn-change-container">
                   <button class="btn-minus">
@@ -139,45 +148,32 @@
                 </button>
               </div>
             </div>
-          </div>
-          <div class="container-titleBidsPrice">
-            <div class="container-title">
-              <h1 id="listing-title">Listing Title</h1>
-            </div>
-            <div class="container-bidsPrice">
-              <div class="container-bids">
-                <h2 id="listing-bids">Auction ends in:</h2>
-                <!-- Bids List -->
-                <div class="previous-bids-and-price-container">
-                  <div class="container-price">
-                    <h3 id="listing-price">
-                      Highest bid:
-                      <a class="previous-bids-profile-link">
-                        <img class="profile-img" height="16px" width="16px" />
-                      </a>
-                    </h3>
-                  </div>
-                  <ul id="bids-list">
-                    <li>
-                      <a class="previous-bids-profile-link"></a>
-                      <p class="previous-bids-amount"></p>
-                    </li>
-                    <li>
-                      <a class="previous-bids-profile-link"></a>
-                      <p class="previous-bids-amount"></p>
-                    </li>
-                    <li>
-                      <a class="previous-bids-profile-link"></a>
-                      <p class="previous-bids-amount"></p>
-                    </li>
-                    <li>
-                      <a class="previous-bids-profile-link"></a>
-                      <p class="previous-bids-amount"></p>
-                    </li>
-
-                    <!-- More bids -->
-                  </ul>
+            <div class="container-bids">
+              <!-- Bids List -->
+              <div class="previous-bids-and-price-container">
+                <div class="container-price">
+                  <h3 id="listing-price">
+                    Highest bid:
+                    <a class="previous-bids-profile-link">
+                      <img class="profile-img" height="16px" width="16px" />
+                    </a>
+                  </h3>
                 </div>
+                <ul id="bids-list">
+                  <li>
+                    <a class="previous-bids-profile-link"></a>
+                    <p class="previous-bids-amount"></p>
+                  </li>
+                  <li class="d-flex align-items-center justify-content-center">
+                    <p class="text-center">No bids yet</p>
+                  </li>
+                  <li>
+                    <a class="previous-bids-profile-link"></a>
+                    <p class="previous-bids-amount"></p>
+                  </li>
+
+                  <!-- More bids -->
+                </ul>
               </div>
             </div>
           </div>

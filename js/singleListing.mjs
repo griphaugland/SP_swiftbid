@@ -1,7 +1,7 @@
 import fetchContent from "./modules/fetchContent.mjs";
 import { renderSingleCard } from "./modules/renderSingleCard.mjs";
 
-async function SingleListingFetchFromURL() {
+export async function SingleListingFetchFromURL() {
   const container = document.getElementById("listing-container");
   let params = new URLSearchParams(window.location.search);
   if (params.has("id")) {

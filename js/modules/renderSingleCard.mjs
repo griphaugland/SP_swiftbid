@@ -1,5 +1,11 @@
 import fetchContent from "./fetchContent.mjs";
 const container = document.getElementById("listing-container");
+const image = document.getElementById("listing-image");
+const timeRemaining = document.getElementById("listing-bids");
+const priceContainer = document.querySelectorAll("previous-bids-profile-link");
+const listingTitle = document.getElementById("listing-title");
+const listingPrice = document.getElementById("listing-price");
+const bidsList = document.getElementById("bids-list");
 
 export function isValidImageSrc(src, callback) {
   let img = new Image();
@@ -96,53 +102,46 @@ export function updateCardWithMedia(item, media, container) {
   const imageContainer = document.createElement("div");
   imageContainer.className = "card-image-container";
 
-  const img = new Image();
-  img.src = media;
-  img.height = 100;
-  img.width = 200;
-  img.alt = `Alt text:${item.title}`;
+  image.src = media;
 
-  imageContainer.appendChild(img);
-  card.appendChild(imageContainer);
+  listingTitle.innerText = `${item.title}`;
+  const timeRemainingValue = document.createElement("span");
+  const timeRemainingDescription = document.createElement("span");
+  timeRemainingDescription.innerText = "Auction ends in: ";
+  timeRemainingValue.innerText = `${timeLeft}`;
+  timeRemainingValue.classList.add(`${color}`);
+  timeRemaining.innerHTML = "";
+  timeRemaining.append(timeRemainingDescription, timeRemainingValue);
 
-  // Create and append the text container
-  const textContainer = document.createElement("div");
-  textContainer.className = "card-text-container";
+  const highestBidContainerValue = document.createElement("span");
+  const highestBidContainerDesc = document.createElement("span");
+  highestBidContainerDesc.innerText = "Highest bid:";
+  highestBidContainerValue.innerText = `${price} credits`;
+  listingPrice.innerHTML = "";
+  listingPrice.append(highestBidContainerDesc, highestBidContainerValue);
 
-  const titlePriceContainer = document.createElement("div");
-  titlePriceContainer.className = "title-price-container";
-
-  const title = document.createElement("h3");
-  if (item.title.length > 22) {
-    title.innerText = item.title.substring(0, 22) + " ...";
-  } else {
-    title.innerText = item.title;
+  // render bid overview
+  function getBidInformation() {
+    if (item.bids.length === 0) {
+      return console.log("no bids");
+    }
+    bidsList.innerHTML = "";
+    /* console.log(item.bids); */
+    let sorted = item.bids.sort((a, b) => a.amount - b.amount);
+    console.log(sorted);
+    item.bids.forEach((item) => {
+      let listItem = document.createElement("li");
+      let bidderName = document.createElement("a");
+      bidderName.innerText = item.bidderName;
+      bidderName.href = `../profile?user=${item.bidderName}`;
+      let bidderAmount = document.createElement("span");
+      bidderAmount.innerText = `${item.amount}`;
+      listItem.append(bidderName, bidderAmount);
+      bidsList.append(listItem);
+    });
+    return bidsList;
   }
-
-  const pricePara = document.createElement("p");
-  pricePara.innerText = `${price} ${credits}`;
-
-  titlePriceContainer.appendChild(title);
-  titlePriceContainer.appendChild(pricePara);
-  textContainer.appendChild(titlePriceContainer);
-
-  const bidButton = document.createElement("a");
-  bidButton.id = "card-bid-button";
-  bidButton.href = `../listings/listing/?id=${item.id}`;
-
-  const handImg = new Image();
-  handImg.src = hand;
-  handImg.alt = "Hand icon";
-  handImg.height = 35;
-  handImg.width = 55;
-
-  bidButton.appendChild(handImg);
-  textContainer.appendChild(bidButton);
-
-  card.appendChild(textContainer);
-
-  // Append card to container
-  container.appendChild(card);
+  getBidInformation();
 }
 
 export function renderSingleCard(item, container) {

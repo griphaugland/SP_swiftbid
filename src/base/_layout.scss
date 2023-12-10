@@ -8,7 +8,7 @@
   align-items: center;
   flex-direction: column;
   main {
-    height: 90svh;
+    min-height: 90svh;
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
@@ -21,7 +21,7 @@
       section:nth-of-type(1) {
         margin-top: 5rem;
         min-width: 300px;
-        height: 30svh;
+        min-height: 30svh;
         div {
           width: 300px;
         }
@@ -129,6 +129,7 @@
     height: 100% !important;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start !important;
     .page-subtitle {
       margin-left: 1rem;
       width: 100%;
@@ -264,7 +265,7 @@
   }
 }
 .single-listing-main {
-  height: 60svh !important;
+  min-height: 60svh !important;
 }
 .single-listing-section {
   display: flex;
@@ -349,6 +350,7 @@
   display: flex;
   justify-content: space-between;
   color: $subtle;
+  min-height: 33.6px;
 }
 #bids-list li p {
   color: #808080;
@@ -417,4 +419,28 @@
   gap: 0.2rem;
   width: 100%;
   height: 100%;
+}
+#listing-image {
+  width: 100%;
+  height: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+#listing-bids {
+  display: flex;
+  justify-content: space-between;
+}
+.red {
+  color: #bc3122;
+}
+.yellow {
+  color: #f8c809;
+}
+.green {
+  color: #4caf50;
+}
+.red-yellow {
+  color: #e5705b;
 }

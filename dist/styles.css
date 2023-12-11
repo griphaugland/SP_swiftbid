@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* $tertiary: #fd6a01; */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Syncopate:wght@400;700&display=swap");
 .login-main,
 .register-main {
@@ -87,7 +88,7 @@
   font-size: 14px;
 }
 .auth-layout form input:focus, .feed-layout form input:focus {
-  border: 1px solid #fd6a01;
+  border: 1px solid rgb(250, 169, 110);
 }
 .auth-layout .res-container, .feed-layout .res-container {
   font-size: 14px;
@@ -140,7 +141,7 @@
   position: absolute;
   top: 50%;
   background-color: #ffffff;
-  border: 2px solid #fd6a01;
+  border: 2px solid rgb(250, 169, 110);
 }
 .feed-layout main {
   padding-inline: 1rem;
@@ -189,10 +190,10 @@
   font-size: 14px;
 }
 .feed-layout main section #search-form .btn-search svg {
-  color: #fd6a01 !important;
+  color: rgb(250, 169, 110) !important;
 }
 .feed-layout main section #search-form #search-button:hover {
-  border: 1px solid #fd6a01 !important;
+  border: 1px solid rgb(250, 169, 110) !important;
 }
 .feed-layout main section .form-control-search {
   border-radius: 20px 0px 0px 20px !important;
@@ -446,7 +447,7 @@
 }
 
 .previous-bids-and-price-container {
-  border: 2px solid #fd6a01;
+  border: 2px solid rgb(250, 169, 110);
   overflow: hidden;
 }
 
@@ -526,7 +527,7 @@
 }
 
 .listing-owner-name {
-  color: #fd6a01;
+  color: rgb(250, 169, 110);
   text-decoration: none;
 }
 
@@ -538,7 +539,7 @@
 }
 
 .listing-owner-name:hover {
-  color: #fe7c1e !important;
+  color: #fbbb8c !important;
 }
 
 #listing-bids br {
@@ -552,6 +553,8 @@
   gap: 0.5rem;
 }
 
+/* $tertiary: #fd6a01; */
+/* $tertiary: #fd6a01; */
 header {
   width: 100%;
   height: 100%;
@@ -628,7 +631,7 @@ header .navbar-toggler {
   z-index: 99;
 }
 header .navbar-toggler:hover .ham-bar {
-  background-color: #fd6a01;
+  background-color: rgb(250, 169, 110);
 }
 header .hamburger {
   z-index: 99;
@@ -661,6 +664,7 @@ header .credits-label {
   margin-bottom: 0rem !important;
 }
 
+/* $tertiary: #fd6a01; */
 .btn {
   border-color: none !important;
   outline: none !important;
@@ -669,7 +673,7 @@ header .credits-label {
   width: 110px;
   border-radius: 5px;
   border: none;
-  background-color: #fd6a01;
+  background-color: rgb(250, 169, 110);
   font-size: 1rem;
   line-height: 1.5;
   text-align: center;
@@ -679,12 +683,12 @@ header .credits-label {
 }
 .btn.btn-primary {
   font-weight: 500;
-  background-color: #fd6a01;
+  background-color: rgb(250, 169, 110);
   color: #09232f;
-  border: 1px solid #fd6a01 !important;
+  border: 1px solid rgb(250, 169, 110) !important;
 }
 .btn.btn-primary:hover {
-  background-color: #df5d01;
+  background-color: #f99750;
   color: #0e3649 !important;
 }
 .btn.btn-secondary {
@@ -866,7 +870,7 @@ header .credits-label {
 }
 
 #card-bid-button {
-  background-color: #fea566;
+  background-color: rgb(250, 169, 110);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 4px;
   border-radius: 100%;
   transition: all 0.1s ease-in-out;
@@ -877,7 +881,7 @@ header .credits-label {
 }
 
 #card-bid-button:hover {
-  background-color: #ffc398;
+  background-color: #ffa05c;
 }
 
 .filter-cards {
@@ -885,6 +889,7 @@ header .credits-label {
   font-weight: 500;
 }
 
+/* $tertiary: #fd6a01; */
 .xs {
   font-size: 0.75rem;
 }
@@ -917,6 +922,7 @@ header .credits-label {
   font-size: 3rem;
 }
 
+/* $tertiary: #fd6a01; */
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors

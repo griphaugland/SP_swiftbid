@@ -80,6 +80,11 @@
                   <li>
                     <a class="dropdown-item" href="../profile/">Profile</a>
                   </li>
+                  <li>
+                    <a class="dropdown-item" href="../profile/?create=true"
+                      >Create listing</a
+                    >
+                  </li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
                     <a class="dropdown-item" id="logout-button" href="#"
@@ -118,11 +123,9 @@
           Filter <img src="../media/filter-solid(1).svg" height="16px" width="16px" alt="Filter icon" />
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenu2Button">
-          <a class="dropdown-item" href="#">Active</a>
-          <a class="dropdown-item" href="#">Ending soon</a>
-          <a class="dropdown-item" href="#">Recently Listed</a>
-          <a class="dropdown-item" href="#">Recently Listed</a>
-          <a class="dropdown-item" href="#">Recently Listed</a>
+          <a class="dropdown-item" id="filter-ending-soon" href="#">Ending soon</a>
+          <a class="dropdown-item" id="filter-recently-listed" href="#">Recently Listed</a>
+          <a class="dropdown-item" id="filter-expired" href="#">Expired</a>
         </div>
     </div>
     

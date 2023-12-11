@@ -143,8 +143,8 @@ export function updateCardWithMedia(item, media, container) {
 
   const highestBidContainerValue = document.createElement("span");
   const highestBidContainerDesc = document.createElement("span");
-  highestBidContainerDesc.innerText = "Highest bid:";
-  highestBidContainerValue.innerText = `${price} ${credits}`;
+  highestBidContainerDesc.innerText = "Bidders";
+  highestBidContainerValue.innerText = `credits`;
   listingPrice.innerHTML = "";
   listingPrice.append(highestBidContainerDesc, highestBidContainerValue);
 
@@ -163,8 +163,15 @@ export function updateCardWithMedia(item, media, container) {
   const bidMinus = document.querySelector(".btn-minus");
   const bidInput = document.querySelector(".input-bid");
   bidInput.value = price + 1;
+  const currentCredits = getLocalStorageData("credits");
   bidInput.addEventListener("change", () => {
     if (bidInput.value < price + 1) {
+      bidInput.value = price + 1;
+    }
+    if (bidInput.value > currentCredits) {
+      bidInput.value = currentCredits;
+    }
+    if (bidInput.type != Number) {
       bidInput.value = price + 1;
     }
   });
@@ -172,6 +179,9 @@ export function updateCardWithMedia(item, media, container) {
     bidInput.value++;
     if (bidInput.value < price + 1) {
       bidInput.value = price + 1;
+    }
+    if (bidInput.value > currentCredits) {
+      bidInput.value = currentCredits;
     }
   });
   bidMinus.addEventListener("click", () => {

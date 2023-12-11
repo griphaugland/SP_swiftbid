@@ -6,7 +6,7 @@ export async function pagination() {
   let params = new URLSearchParams(window.location.search);
   const offset = params.get("offset");
   async function getListings() {
-    const url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=asc&_bids=true&_seller=true&limit=20&offset=${offset}`;
+    const url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=asc&_bids=true&_seller=true&limit=12&offset=${offset}`;
     const res = await fetch(url, {
       method: `GET`,
       headers: {
@@ -36,28 +36,27 @@ let offset = 0;
 if (params.has("offset")) {
   offset = parseInt(params.get("offset"), 10);
   prevBtn.style.display = "inline-block";
+  if (offset === 0) {
+    prevBtn.style.display = "none";
+  } else {
+    prevBtn.style.display = "inline-block";
+  }
+}
+if (params.has("search")) {
+  nextBtn.style.display = "none";
+  prevBtn.style.display = "none";
 }
 
 function increaseOffset() {
-  console.log(offset);
-  offset += 20;
+  offset += 12;
   window.location.href = `/listings/?offset=${offset}`;
-  console.log(offset);
 }
 
 function decreaseOffset() {
-  console.log(offset);
-  offset -= 20;
+  offset -= 12;
   if (offset < 0) offset = 0;
   window.location.href = `/listings/?offset=${offset}`;
-  console.log(offset);
 }
 
 nextBtn.onclick = increaseOffset;
 prevBtn.onclick = decreaseOffset;
-
-/* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 20px;
-  background-color: #ff923c;
-  padding: 0.3rem;
-  padding-inline: 0.9rem; */

@@ -130,11 +130,15 @@
   }
 }
 #card-bid-button {
+  background-color: lighten($tertiary, 20%);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 4px;
+  border-radius: 100%;
+  transition: all 0.1s ease-in-out;
   img {
+    padding: 0.2rem;
     margin: 0.3rem;
-    transition: all 0.1s ease-in-out;
   }
-  img:hover {
-    transform: scale(1.02);
-  }
+}
+#card-bid-button:hover {
+  background-color: lighten($tertiary, 30%);
 }

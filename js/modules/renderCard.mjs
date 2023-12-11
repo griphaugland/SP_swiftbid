@@ -143,9 +143,9 @@ export function updateCardWithMedia(item, media, container) {
 
   const handImg = new Image();
   handImg.src = hand;
-  handImg.alt = "Hand icon";
+  handImg.alt = "Hand/bid icon";
   handImg.height = 35;
-  handImg.width = 55;
+  handImg.width = 35;
 
   bidButton.appendChild(handImg);
   textContainer.appendChild(bidButton);

@@ -23,7 +23,7 @@ export default function renderPlaceholderCards() {
             <h3></h3>
             <p></p>
           </div>
-          <a id="card-bid-button" class="" href="#"><img src="${hand}" height="35px" width="55px" alt="Hand icon" /></a>
+          <a id="card-bid-button" class="" href="#"><img src="${hand}" height="35px" width="35px" alt="Hand icon" /></a>
         </div>
       `;
     container.appendChild(card);
@@ -52,7 +52,7 @@ export function renderPlaceholderCardsCategories(id) {
             <h3></h3>
             <p></p>
           </div>
-          <a id="card-bid-button" class="" href="#"><img src="${hand}" height="35px" width="55px" alt="Hand icon" /></a>
+          <a id="card-bid-button" class="" href="#"><img src="${hand}" height="35px" width="35px" alt="Hand icon" /></a>
         </div>
       `;
     container.appendChild(card);

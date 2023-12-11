@@ -2,14 +2,11 @@ import fetchContent from "./fetchContent.mjs";
 
 export default async function renderCards() {
   const content = await fetchContent("getAll");
-  let slicedContent = content.slice(0, 20);
   const container = document.getElementById("card-container");
-
-  if (slicedContent) {
+  if (content) {
     // Clear previous content
     container.innerHTML = "";
-
-    slicedContent.forEach((item) => {
+    content.forEach((item) => {
       renderCard(item, container);
     });
   }

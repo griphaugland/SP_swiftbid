@@ -163,7 +163,7 @@
     section {
       #search-form {
         display: flex;
-        max-width: 300px;
+        max-width: 360px;
         #search-button {
           min-width: 85px;
         }
@@ -510,4 +510,20 @@
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+}
+#dropdownMenu2Button {
+  font-size: 14px;
+  color: $secondary;
+}
+#dropdownMenu2Button:active,
+#dropdownMenu2Button:focus {
+  background-color: $primary !important;
+}
+.top-section {
+  max-width: 1200px;
+  @media (max-width: 1230px) {
+    .card-container-wrapper {
+      max-width: 900px;
+    }
+  }
 }

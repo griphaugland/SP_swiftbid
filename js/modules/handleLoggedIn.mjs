@@ -12,6 +12,10 @@ export default function renderNav() {
     const data = getLocalStorageData("all");
     creditContainer.innerHTML = `<p class="credits-label">Credits:</p> <p class="credits-amount">${data.credits}</p>`;
     LogoutBtn.style.color = "rgba(239, 79, 79, 0.953)";
+    const accountImage = document.getElementById("account-image");
+    if (data.avatar) {
+      accountImage.src = data.avatar;
+    }
   } else if (!loggedIn) {
     creditContainer.innerHTML = `<p class="credits-label">Credits:</p> <p class="credits-amount credits-amount-red">0</p>`;
     myProfileButton.style.display = "none";

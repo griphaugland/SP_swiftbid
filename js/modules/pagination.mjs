@@ -49,13 +49,15 @@ if (params.has("search")) {
 
 function increaseOffset() {
   offset += 12;
-  window.location.href = `/listings/?offset=${offset}`;
+  params.set("offset", offset);
+  window.location.href = window.location.pathname + "?" + params;
 }
 
 function decreaseOffset() {
   offset -= 12;
   if (offset < 0) offset = 0;
-  window.location.href = `/listings/?offset=${offset}`;
+  params.set("offset", offset);
+  window.location.href = window.location.pathname + "?" + params;
 }
 
 nextBtn.onclick = increaseOffset;

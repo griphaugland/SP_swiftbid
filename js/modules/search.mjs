@@ -12,10 +12,12 @@ const searchInput = document.getElementById("search-input");
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  let params = new URLSearchParams(window.location.search);
   let searchValue = searchInput.value;
   if (searchValue === "") {
     console.log("empty input field");
   } else {
+    params;
     updateURLParameter(searchValue);
     renderSearchResults(searchValue);
   }
@@ -36,12 +38,20 @@ function triggerSearchFromURL() {
 function updateURLParameter(searchValue) {
   let params = new URLSearchParams(window.location.search);
   params.set("search", searchValue);
+  if (params.has("offset")) {
+    params.delete("offset");
+  }
+  if (params.has("filter")) {
+    params.delete("filter");
+  }
   let newUrl = window.location.pathname + "?" + params.toString();
   window.history.replaceState({}, "", newUrl);
 }
 
 export async function renderSearchResults(searchValue) {
   startLoading("search-button");
+  const pagination = document.querySelector(".pagination");
+  pagination.display = "none";
   const url = `https://api.noroff.dev/api/v1/auction/listings?_bids=true&_tag=${searchValue}`;
   const res = await fetch(url, {
     method: `GET`,

@@ -19,13 +19,38 @@ export default async function fetchContent(typeOfRequest, id) {
   }
   async function getAll() {
     let params = new URLSearchParams(window.location.search);
-    const offset = params.get("offset");
+    let offset = params.get("offset") || 0;
+    console.log(params);
+    console.log(offset);
+    const filterEndingSoon = document.getElementById("filter-ending-soon");
+    const filterRecentlyListed = document.getElementById(
+      "filter-recently-listed"
+    );
+    const filterExpired = document.getElementById("filter-expired");
     let url;
-    if (params.has("offset")) {
+    if (Number(params.get("filter")) === 1) {
+      filterEndingSoon.style.color = "gray";
+      filterRecentlyListed.style.fontWeight = "black";
+      filterExpired.style.color = "black";
       url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=asc&_bids=true&_seller=true&limit=12&offset=${offset}`;
-    } else {
-      url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=asc&_bids=true&_seller=true&limit=12`;
     }
+    if (Number(params.get("filter")) === 2) {
+      filterEndingSoon.style.color = "black";
+      filterRecentlyListed.style.color = "gray";
+      filterExpired.style.color = "black";
+      url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=desc&_bids=true&_seller=true&limit=12&offset=${offset}`;
+    }
+    if (Number(params.get("filter")) === 3) {
+      filterEndingSoon.style.color = "black";
+      filterRecentlyListed.style.color = "black";
+      filterExpired.style.color = "gray";
+      url = `https://api.noroff.dev/api/v1/auction/listings/?_active=false&sort=endsAt&sortOrder=asc&_bids=true&_seller=true&limit=12&offset=${offset}`;
+    }
+    if (!params.get("filter")) {
+      url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=asc&_bids=true&_seller=true&limit=12&offset=${offset}`;
+    }
+
+    console.log(url);
     const res = await fetch(url, {
       method: `GET`,
       headers: {
@@ -33,6 +58,7 @@ export default async function fetchContent(typeOfRequest, id) {
       },
     });
     const data = await res.json();
+    console.log(data);
     checkForErrors(data);
     return data;
   }

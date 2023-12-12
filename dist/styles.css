@@ -88,7 +88,7 @@
   font-size: 14px;
 }
 .auth-layout form input:focus, .feed-layout form input:focus {
-  border: 1px solid rgb(250, 169, 110);
+  border: 1px solid rgb(155, 193, 230);
 }
 .auth-layout .res-container, .feed-layout .res-container {
   font-size: 14px;
@@ -141,7 +141,7 @@
   position: absolute;
   top: 50%;
   background-color: #ffffff;
-  border: 2px solid rgb(250, 169, 110);
+  border: 2px solid rgb(155, 193, 230);
 }
 .feed-layout main {
   padding-inline: 1rem;
@@ -179,7 +179,7 @@
 }
 .feed-layout main section #search-form {
   display: flex;
-  max-width: 300px;
+  max-width: 360px;
 }
 .feed-layout main section #search-form #search-button {
   min-width: 85px;
@@ -190,10 +190,10 @@
   font-size: 14px;
 }
 .feed-layout main section #search-form .btn-search svg {
-  color: rgb(250, 169, 110) !important;
+  color: rgb(155, 193, 230) !important;
 }
 .feed-layout main section #search-form #search-button:hover {
-  border: 1px solid rgb(250, 169, 110) !important;
+  border: 1px solid rgb(155, 193, 230) !important;
 }
 .feed-layout main section .form-control-search {
   border-radius: 20px 0px 0px 20px !important;
@@ -447,7 +447,7 @@
 }
 
 .previous-bids-and-price-container {
-  border: 2px solid rgb(250, 169, 110);
+  border: 2px solid rgb(155, 193, 230);
   overflow: hidden;
 }
 
@@ -527,7 +527,7 @@
 }
 
 .listing-owner-name {
-  color: rgb(250, 169, 110);
+  color: rgb(155, 193, 230);
   text-decoration: none;
 }
 
@@ -539,7 +539,7 @@
 }
 
 .listing-owner-name:hover {
-  color: #fbbb8c !important;
+  color: #b3d0ec !important;
 }
 
 #listing-bids br {
@@ -553,11 +553,31 @@
   gap: 0.5rem;
 }
 
+#dropdownMenu2Button {
+  font-size: 14px;
+  color: #141918;
+}
+
+#dropdownMenu2Button:active,
+#dropdownMenu2Button:focus {
+  background-color: #ffffff !important;
+}
+
+.top-section {
+  max-width: 1200px;
+}
+@media (max-width: 1230px) {
+  .top-section .card-container-wrapper {
+    max-width: 900px;
+  }
+}
+
 /* $tertiary: #fd6a01; */
 /* $tertiary: #fd6a01; */
 header {
   width: 100%;
   height: 100%;
+  background-color: #0d2335;
 }
 header nav {
   height: 100%;
@@ -599,11 +619,19 @@ header #account-image {
   object-fit: contain;
   background-position: center;
   background-repeat: none;
+  border-radius: 100%;
+  border: 1px solid rgb(155, 193, 230);
 }
 header .nav-link {
   display: flex !important;
   align-items: center !important;
+  color: #ffffff !important;
   gap: 0.2rem;
+  font-weight: 300;
+}
+header .nav-link.active {
+  font-weight: bold;
+  color: #ffffff !important;
 }
 header .navbar-toggler {
   padding: 0.3rem !important;
@@ -631,7 +659,7 @@ header .navbar-toggler {
   z-index: 99;
 }
 header .navbar-toggler:hover .ham-bar {
-  background-color: rgb(250, 169, 110);
+  background-color: rgb(155, 193, 230);
 }
 header .hamburger {
   z-index: 99;
@@ -673,7 +701,7 @@ header .credits-label {
   width: 110px;
   border-radius: 5px;
   border: none;
-  background-color: rgb(250, 169, 110);
+  background-color: rgb(76, 133, 178);
   font-size: 1rem;
   line-height: 1.5;
   text-align: center;
@@ -683,12 +711,12 @@ header .credits-label {
 }
 .btn.btn-primary {
   font-weight: 500;
-  background-color: rgb(250, 169, 110);
+  background-color: rgb(76, 133, 178);
   color: #09232f;
-  border: 1px solid rgb(250, 169, 110) !important;
+  border: 1px solid rgb(155, 193, 230) !important;
 }
 .btn.btn-primary:hover {
-  background-color: #f99750;
+  background-color: #83b2e0;
   color: #0e3649 !important;
 }
 .btn.btn-secondary {
@@ -857,7 +885,6 @@ header .credits-label {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ff4500 !important;
   color: white !important;
   border: none !important;
   padding: 10px 20px !important;
@@ -870,23 +897,32 @@ header .credits-label {
 }
 
 #card-bid-button {
-  background-color: rgb(250, 169, 110);
+  background-color: rgb(76, 133, 178);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 4px;
-  border-radius: 100%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
   transition: all 0.1s ease-in-out;
+  padding-inline: 1rem;
+  padding-block: 0.4rem;
 }
-#card-bid-button img {
-  padding: 0.2rem;
-  margin: 0.3rem;
+#card-bid-button p {
+  margin-bottom: 0rem;
 }
 
 #card-bid-button:hover {
-  background-color: #ffa05c;
+  background-color: #3d6a8e;
 }
 
 .filter-cards {
   color: #8c8c8c;
   font-weight: 500;
+}
+
+#filter-ending-soon {
+  color: gray;
 }
 
 /* $tertiary: #fd6a01; */

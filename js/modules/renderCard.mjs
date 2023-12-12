@@ -1,6 +1,8 @@
 import fetchContent from "./fetchContent.mjs";
 
 export default async function renderCards() {
+  const pagination = document.querySelector(".pagination");
+  pagination.display = "none";
   const content = await fetchContent("getAll");
   const container = document.getElementById("card-container");
   if (content) {
@@ -10,6 +12,7 @@ export default async function renderCards() {
       renderCard(item, container);
     });
   }
+  pagination.display = "flex";
 }
 
 export function isValidImageSrc(src, callback) {
@@ -21,7 +24,6 @@ export function isValidImageSrc(src, callback) {
 
 export function updateCardWithMedia(item, media, container) {
   const hourglass = "../../media/hourglass-half-regular.svg";
-  const hand = "../../media/hand-sparkles-solid.svg";
   const card = document.createElement("div");
   card.className = "card-listing";
   const expirationDate = new Date(item.endsAt);
@@ -140,14 +142,8 @@ export function updateCardWithMedia(item, media, container) {
   const bidButton = document.createElement("a");
   bidButton.id = "card-bid-button";
   bidButton.href = `../listings/listing/?id=${item.id}`;
+  bidButton.innerHTML = "<p>BID</p>";
 
-  const handImg = new Image();
-  handImg.src = hand;
-  handImg.alt = "Hand/bid icon";
-  handImg.height = 35;
-  handImg.width = 35;
-
-  bidButton.appendChild(handImg);
   textContainer.appendChild(bidButton);
 
   card.appendChild(textContainer);

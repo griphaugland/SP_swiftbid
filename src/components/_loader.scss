@@ -1,0 +1,27 @@
+.spinner {
+  min-width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  animation: spin 1s linear infinite;
+}
+.dot1,
+.dot2 {
+  width: 4px;
+  height: 4px;
+  border-radius: 100%;
+  background-color: $secondary;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

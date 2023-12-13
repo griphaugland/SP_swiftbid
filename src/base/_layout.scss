@@ -126,6 +126,10 @@
     top: 50%;
     background-color: $primary;
     border: 2px solid $tertiary;
+    border-radius: 10px;
+    .error-message {
+      padding: 2rem;
+    }
   }
   @extend .auth-layout;
   min-height: 100svh;
@@ -154,6 +158,34 @@
       &-feed {
         color: $subtle;
         padding-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: flex-start;
+        a {
+          color: $button-color;
+          text-decoration: none;
+          font-weight: 500;
+          &:hover {
+            color: $tertiary;
+          }
+        }
+      }
+      &-profile {
+        color: $subtle;
+        padding-bottom: 0.5rem;
+        display: flex;
+        align-items: flex-start !important;
+        gap: 1rem;
+        justify-content: flex-start;
+        a {
+          color: $button-color;
+          text-decoration: none;
+          font-weight: 500;
+          &:hover {
+            color: $tertiary;
+          }
+        }
       }
     }
 
@@ -309,6 +341,9 @@
 .container-imageAndBid {
   display: flex;
   min-width: 300px;
+  @media (min-width: 1200px) {
+    min-width: 500px;
+  }
 }
 
 .container-image {
@@ -325,6 +360,9 @@
   min-width: 300px;
   position: relative;
   gap: 1.6rem;
+  @media (min-width: 900px) {
+    min-width: 500px;
+  }
 }
 
 .container-title,
@@ -542,4 +580,192 @@
     margin-left: 0rem !important;
     gap: 1rem !important;
   }
+}
+.warningText {
+  color: #ff6f00;
+  font-size: 14px;
+  padding-top: 0.4rem;
+  margin-bottom: 0rem;
+  padding-bottom: 0rem;
+}
+.profile-main {
+  @media (max-width: 610px) {
+    width: auto !important;
+  }
+  .profile-card-section {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.profile-main section {
+  min-height: 300px;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0;
+  display: flex;
+  margin: 0 auto;
+  padding-inline: 0rem !important;
+  @media (max-width: 1230px) {
+    max-width: 900px;
+  }
+  @media (max-width: 930px) {
+    max-width: 580px;
+  }
+  @media (max-width: 610px) {
+    width: 100%;
+    padding-inline: 0rem !important;
+    .profile-username {
+      flex-direction: column-reverse;
+      align-items: flex-start !important;
+      flex-wrap: wrap;
+      #btn-edit-profile {
+        margin-left: 0rem !important;
+      }
+    }
+  }
+  .user-information-container {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    font-weight: 900;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    @media (max-width: 1230px) {
+      flex-direction: column;
+      .profile-user-info-container {
+        padding-inline: 2rem !important;
+        min-height: 140px;
+        #btn-edit-profile {
+          margin-left: auto;
+        }
+      }
+      .profile-image-container {
+        min-height: 200px !important;
+        :hover {
+          cursor: pointer;
+          filter: brightness(0.2);
+        }
+      }
+      .profile-user-details-container {
+        margin-left: 0rem !important;
+        flex-direction: row;
+        display: flex;
+        height: 100% !important;
+        min-width: 100% !important;
+        border-top: 2px solid rgb(214, 214, 214);
+        border-left: 0px solid rgb(214, 214, 214) !important;
+        gap: 0rem !important;
+        .profile-listings {
+          border-right: 1px solid rgb(214, 214, 214);
+          border-bottom: 0px solid rgb(214, 214, 214) !important;
+          border-left: 0px solid rgb(214, 214, 214) !important;
+          min-height: 100px !important;
+        }
+        .profile-bids {
+          border-left: 1px solid rgb(214, 214, 214);
+          border-top: 0px solid rgb(214, 214, 214) !important;
+          min-height: 100px !important;
+        }
+      }
+    }
+    @media (max-width: 930px) {
+    }
+    @media (max-width: 610px) {
+      .profile-user-details-container {
+        min-width: 100% !important;
+        flex-direction: column;
+        border-left: 0px solid rgb(214, 214, 214) !important;
+        h3 {
+          border-left: 0px solid rgb(214, 214, 214) !important;
+          border-right: 0px solid rgb(214, 214, 214) !important;
+        }
+        .profile-bids {
+          border-top: 2px solid rgb(214, 214, 214) !important;
+        }
+      }
+      .profile-image-container {
+        min-width: 100% !important;
+      }
+    }
+    .profile-image-container {
+      height: 100%;
+      min-height: 300px;
+      min-width: 300px;
+      border-radius: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 100%;
+        height: 100%;
+        width: 135px;
+        height: 135px;
+        object-fit: contain;
+        border-radius: 100%;
+        outline: 2px solid $tertiary;
+      }
+    }
+    .profile-user-info-container {
+      margin-right: auto;
+      color: $button-color;
+      .profile-username {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 1rem;
+      }
+      #btn-edit-profile {
+        background-color: $subtle;
+        color: $primary;
+        font-weight: 500;
+      }
+      .profile-description {
+        font-size: 1.3rem;
+        color: $secondary !important;
+        font-weight: 300;
+        margin-right: 0.5rem;
+      }
+    }
+    .profile-user-details-container {
+      margin-left: auto;
+      height: 300px;
+      min-width: 300px;
+      gap: 0.5rem;
+      border-left: 2px solid rgb(214, 214, 214);
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: $subtle;
+        height: 50%;
+        width: 100%;
+      }
+      .profile-listings {
+        border-bottom: 1px solid rgb(214, 214, 214);
+      }
+      .profile-bids {
+        border-top: 1px solid rgb(214, 214, 214);
+      }
+      .profile-detail-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        margin-bottom: 0rem !important;
+        color: $button-color;
+        span {
+          font-size: 1.2rem;
+          color: $secondary !important;
+        }
+      }
+    }
+  }
+}
+.joke-container {
+  display: flex;
+  flex-direction: column;
 }

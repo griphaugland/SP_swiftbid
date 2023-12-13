@@ -12,10 +12,10 @@ export async function renderCategories() {
     category2.innerHTML = "";
 
     for (const item of slicedEndingSoon) {
-      await renderCard(item, category1);
+      renderCard(item, category1);
     }
     for (const item of slicedPopular) {
-      await renderCard(item, category2);
+      renderCard(item, category2);
     }
   }
 }

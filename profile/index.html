@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile | SwiftBid</title>
     <script src="../js/script.mjs" type="module"></script>
+    <script src="../js/profile.js" type="module"></script>
     <link rel="stylesheet" href="../dist/styles.css" />
     <script src="../dist/js/bootstrap.bundle.min.js"></script>
     <script src="../dist/js/popper.min.js"></script>
@@ -92,9 +93,196 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main class="profile-main">
       <section class="d-flex items-center justify-center">
-        <div class="">MY PROFILE</div>
+        <div class="user-information-container">
+          <div class="profile-image-container">
+            <img
+              src="../../media/account-image-placeholder.png"
+              class="img-fluid"
+              id="profile-image"
+              height="130px"
+              width="130px"
+            />
+          </div>
+          <div class="profile-user-info-container">
+            <h3 class="profile-username">@USERNAME <button id="btn-edit-profile" class="btn btn-secondary font-style-body">Edit Profile</button></h3>
+            <p class="profile-description">Biography under construction! I'm currently busy perfecting my auctioneering skills. More thrilling details coming soon... </p>
+        </div>
+        <div class="profile-user-details-container">
+            <h3 class="profile-listings profile-detail-container">LISTINGS <span id="info-listings">0</span></h3>
+            <h3 class="profile-bids profile-detail-container">WINS <span id="info-wins">0</span></h3>
+      </section>
+      <section class="profile-card-section">
+        <h6 class="text-start page-subtitle page-subtitle-profile">
+          WON LISTINGS
+          <!-- <a href="../listings/" class="more-button"
+            ><img
+              class="view-more-image"
+              src="../media/arrow-right-solid.svg"
+              height="16px"
+              width="16px"
+          /></a> -->
+        </h6>
+        <div id="winnings-container" class="card-container">
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder">
+            </div>
+            <div class="card-image-container placeholder-image">
+                <div class="spinner-container w-100 d-flex align-items-center justify-content-center h-25">
+                <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                </div>
+             </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#">BID</a>
+            </div>
+          </div>
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder">
+            </div>
+            <div class="card-image-container placeholder-image">
+                <div class="spinner-container w-100 d-flex align-items-center justify-content-center h-25">
+                <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                </div>
+             </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#">BID</a>
+            </div>
+          </div>
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder">
+            </div>
+            <div class="card-image-container placeholder-image">
+                <div class="spinner-container w-100 d-flex align-items-center justify-content-center h-25">
+                <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                </div>
+             </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#">BID</a>
+            </div>
+          </div>
+
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder">
+            </div>
+            <div class="card-image-container placeholder-image">
+                <div class="spinner-container w-100 d-flex align-items-center justify-content-center h-25">
+                <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                </div>
+             </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#">BID</a>
+            </div>
+          </div>
+
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder">
+            </div>
+            <div class="card-image-container placeholder-image">
+                <div class="spinner-container w-100 d-flex align-items-center justify-content-center h-25">
+                <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                </div>
+             </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#">BID</a>
+            </div>
+          </div>
+
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder">
+            </div>
+            <div class="card-image-container placeholder-image">
+                <div class="spinner-container w-100 d-flex align-items-center justify-content-center h-25">
+                <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                </div>
+             </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#">BID</a>
+            </div>
+          </div>
+
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder">
+            </div>
+            <div class="card-image-container placeholder-image">
+                <div class="spinner-container w-100 d-flex align-items-center justify-content-center h-25">
+                <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                </div>
+             </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#">BID</a>
+            </div>
+          </div>
+
+          <div class="card-listing">
+            <div class="card-top-bar-placeholder">
+            </div>
+            <div class="card-image-container placeholder-image">
+                <div class="spinner-container w-100 d-flex align-items-center justify-content-center h-25">
+                <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+                </div>
+             </div>
+            </div>
+            <div class="card-text-container-placeholder">
+              <div class="title-price-container">
+                <h3></h3>
+                <p></p>
+              </div>
+              <a id="card-bid-button" class="" href="#">BID</a>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <footer class="">

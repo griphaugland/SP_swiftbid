@@ -5,7 +5,7 @@ export default function getLocalStorageData(value) {
     return parsedData;
   }
   if (value === "credits") {
-    return parsedData.credits;
+    return Number(parsedData.credits);
   }
   if (value === "avatar") {
     return parsedData.avatar;

@@ -645,9 +645,9 @@ header .account-image-container {
 header #account-image {
   object-fit: contain;
   background-position: center;
-  background-repeat: none;
+  background-repeat: no-repeat;
   border-radius: 100%;
-  border: 1px solid rgb(155, 193, 230);
+  outline: 2px solid rgb(155, 193, 230);
 }
 header .nav-link {
   display: flex !important;

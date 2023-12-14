@@ -36,3 +36,12 @@
     }
   }
 }
+.button-invisible {
+  background-color: transparent;
+  border: none;
+  color: $primary;
+  &:hover {
+    background-color: transparent;
+    color: darken($primary, 6%) !important;
+  }
+}

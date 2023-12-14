@@ -41,7 +41,9 @@ header {
     border-radius: 100%;
   }
   #account-image {
-    object-fit: contain;
+    object-fit: cover;
+    width: 35px;
+    height: 35px;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 100%;

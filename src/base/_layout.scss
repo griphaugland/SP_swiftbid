@@ -571,7 +571,6 @@
   background-color: $primary !important;
 }
 .top-section {
-  padding-bottom: 1.5rem !important;
   @media (max-width: 610px) {
     position: static !important;
     padding-top: 1rem !important;
@@ -645,11 +644,8 @@
         }
       }
       .profile-image-container {
+        position: relative;
         min-height: 200px !important;
-        :hover {
-          cursor: pointer;
-          filter: brightness(0.2);
-        }
       }
       .profile-user-details-container {
         margin-left: 0rem !important;
@@ -705,7 +701,7 @@
         height: 100%;
         width: 135px;
         height: 135px;
-        object-fit: contain;
+        object-fit: cover;
         border-radius: 100%;
         outline: 2px solid $tertiary;
       }
@@ -729,6 +725,7 @@
         color: $secondary !important;
         font-weight: 300;
         margin-right: 0.5rem;
+        min-height: 75px;
       }
     }
     .profile-user-details-container {
@@ -768,4 +765,29 @@
 .joke-container {
   display: flex;
   flex-direction: column;
+}
+.profile-image-container-popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 1rem;
+}
+#profile-image-popup {
+  width: 135px;
+  height: 135px;
+  object-fit: cover;
+  border-radius: 100%;
+  outline: 2px solid $tertiary;
+}
+#media-error {
+  padding-inline: 2rem;
+}
+.diabled-link {
+  pointer-events: none !important;
+  cursor: default !important;
+  filter: none !important;
+}
+.my-profile-account-image:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
 }

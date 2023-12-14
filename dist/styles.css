@@ -624,9 +624,6 @@
   background-color: #ffffff !important;
 }
 
-.top-section {
-  padding-bottom: 1.5rem !important;
-}
 @media (max-width: 610px) {
   .top-section {
     position: static !important;
@@ -713,11 +710,8 @@
     margin-left: auto;
   }
   .profile-main section .user-information-container .profile-image-container {
+    position: relative;
     min-height: 200px !important;
-  }
-  .profile-main section .user-information-container .profile-image-container :hover {
-    cursor: pointer;
-    filter: brightness(0.2);
   }
   .profile-main section .user-information-container .profile-user-details-container {
     margin-left: 0rem !important;
@@ -772,7 +766,7 @@
   height: 100%;
   width: 135px;
   height: 135px;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 100%;
   outline: 2px solid rgb(155, 193, 230);
 }
@@ -796,6 +790,7 @@
   color: #141918 !important;
   font-weight: 300;
   margin-right: 0.5rem;
+  min-height: 75px;
 }
 .profile-main section .user-information-container .profile-user-details-container {
   margin-left: auto;
@@ -833,6 +828,36 @@
 .joke-container {
   display: flex;
   flex-direction: column;
+}
+
+.profile-image-container-popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-block: 1rem;
+}
+
+#profile-image-popup {
+  width: 135px;
+  height: 135px;
+  object-fit: cover;
+  border-radius: 100%;
+  outline: 2px solid rgb(155, 193, 230);
+}
+
+#media-error {
+  padding-inline: 2rem;
+}
+
+.diabled-link {
+  pointer-events: none !important;
+  cursor: default !important;
+  filter: none !important;
+}
+
+.my-profile-account-image:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
 }
 
 /* $tertiary: #fd6a01; */
@@ -882,7 +907,9 @@ header .account-image-container {
   border-radius: 100%;
 }
 header #account-image {
-  object-fit: contain;
+  object-fit: cover;
+  width: 35px;
+  height: 35px;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 100%;
@@ -994,6 +1021,16 @@ header .credits-label {
 .btn.btn-secondary:hover {
   background-color: #f0f0f0 !important;
   color: #9b9b9b !important;
+}
+
+.button-invisible {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+}
+.button-invisible:hover {
+  background-color: transparent;
+  color: #f0f0f0 !important;
 }
 
 .spinner {

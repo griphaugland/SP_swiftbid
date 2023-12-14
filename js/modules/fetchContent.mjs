@@ -72,7 +72,6 @@ export default async function fetchContent(typeOfRequest, id) {
       },
     });
     const data = await res.json();
-    checkForErrors(data);
     return data;
   }
   async function getAllActiveAsc() {

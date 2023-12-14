@@ -20,6 +20,6 @@ export default function getLocalStorageData(value) {
     return parsedData.accessToken;
   }
   if (parsedData === null) {
-    return;
+    return console.log("Not registered to localStorage");
   }
 }

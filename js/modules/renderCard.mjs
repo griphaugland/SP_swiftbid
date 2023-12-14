@@ -147,7 +147,6 @@ export function updateCardWithMedia(item, media, container) {
   textContainer.appendChild(bidButton);
 
   card.appendChild(textContainer);
-  console.log(card);
   // Append card to container
   container.appendChild(card);
 }

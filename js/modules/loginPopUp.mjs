@@ -28,7 +28,7 @@ export default function manageLoggedIn() {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        You have to be logged in to bid.
+                        You have to be logged in to do bid.
                     </div>
                     <div class="modal-footer">
                     <button type="button" id="continueAsGuest" class="btn btn-secondary" data-bs-dismiss="modal">CONTINUE AS GUEST</button>

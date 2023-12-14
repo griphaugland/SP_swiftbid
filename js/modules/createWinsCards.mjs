@@ -1,10 +1,15 @@
 import fetchContent from "./fetchContent.mjs";
 
 export default async function createWinsCards(winsArray) {
-  let newArr = [];
-  winsArray.forEach(async (item) => {
-    newArr.push(await fetchContent("getSingle", item));
-  });
+  const promises = winsArray.map((item) => fetchContent("getSingle", item));
+  const newArr = await Promise.all(promises);
   console.log(newArr);
-  return newArr;
+  const finalArr = newArr.filter((item) => !item.errors);
+  if (finalArr.length < newArr.length) {
+    console.log(
+      newArr.length - finalArr.length,
+      "fetching errors found, filtered away"
+    );
+  }
+  return finalArr;
 }

@@ -1,7 +1,10 @@
 import fetchContent from "./fetchContent.mjs";
 import getLocalStorageData from "./localStorage.mjs";
+import buildLoginPopUp from "./loginPopUp.mjs";
 import isLoggedIn from "./isLoggedIn.mjs";
 import placeBid from "./placeBid.mjs";
+import popUpActionsLogin from "./popUpActions.mjs";
+
 const container = document.getElementById("listing-container");
 const image = document.getElementById("listing-image");
 const timeRemaining = document.getElementById("listing-bids");
@@ -153,7 +156,13 @@ export function updateCardWithMedia(item, media, container) {
   const listingOwnerPrefix = document.createElement("span");
   listingOwner.innerText = `${item.seller.name}`;
   listingOwner.classList.add("listing-owner-name");
-  listingOwner.href = `../../profile/?user=${item.seller.name}`;
+  if (isLoggedIn()) {
+    listingOwner.href = `../../profile/?user=${item.seller.name}`;
+  } else {
+    listingOwner.addEventListener("click", () => {
+      popUpActionsLogin();
+    });
+  }
   listingOwnerPrefix.innerText = "Posted by:";
   listingOwnerContainer.innerHTML = "";
   listingOwnerContainer.append(listingOwnerPrefix, listingOwner);
@@ -163,57 +172,61 @@ export function updateCardWithMedia(item, media, container) {
   const bidMinus = document.querySelector(".btn-minus");
   const bidInput = document.querySelector(".input-bid");
 
-  const currentCredits = getLocalStorageData("credits");
-  let value = Number(bidInput.value);
-  if (currentCredits < price) {
-    bidInput.disabled = true;
-    bidInput.value = "Not enough credits";
-    bidButton.disabled = true;
-    bidPlus.disabled = true;
-    bidMinus.disabled = true;
-  } else if (bidInput.value != Number) {
-    bidInput.value = price + 1;
-  } else {
-    bidInput.value = price + 1;
-  }
-
-  bidInput.addEventListener("change", () => {
+  if (isLoggedIn()) {
+    const currentCredits = getLocalStorageData("credits");
     let value = Number(bidInput.value);
-    if (value < price + 1) {
+    if (currentCredits < price) {
+      bidInput.disabled = true;
+      bidInput.value = "Not enough credits";
+      bidButton.disabled = true;
+      bidPlus.disabled = true;
+      bidMinus.disabled = true;
+    } else if (bidInput.value != Number) {
       bidInput.value = price + 1;
-    } else if (value > currentCredits) {
-      bidInput.value = currentCredits;
-    }
-  });
-  bidPlus.addEventListener("click", () => {
-    bidInput.value++;
-    if (bidInput.value < price + 1) {
-      bidInput.value = price + 1;
-    }
-    if (bidInput.value > currentCredits) {
-      bidInput.value = currentCredits;
-    }
-  });
-  bidMinus.addEventListener("click", () => {
-    bidInput.value--;
-    if (bidInput.value < price + 1) {
-      bidInput.value = price + 1;
-    }
-  });
-  const warningText = document.createElement("span");
-  bidButton.onclick = () => {
-    if (Number(bidInput.value) == bidInput.value) {
-      placeBid(item.id, bidInput.value, accessToken);
-      if (warningText) {
-        warningText.style.display = "none";
-      }
     } else {
-      const containerBidsPrice = document.querySelector(".container-bidsPrice");
-      warningText.innerHTML =
-        "<p class='warningText' >Invalid bid, please check your bid amount and try again</p>";
-      containerBidsPrice.append(warningText);
+      bidInput.value = price + 1;
     }
-  };
+
+    bidInput.addEventListener("change", () => {
+      let value = Number(bidInput.value);
+      if (value < price + 1) {
+        bidInput.value = price + 1;
+      } else if (value > currentCredits) {
+        bidInput.value = currentCredits;
+      }
+    });
+    bidPlus.addEventListener("click", () => {
+      bidInput.value++;
+      if (bidInput.value < price + 1) {
+        bidInput.value = price + 1;
+      }
+      if (bidInput.value > currentCredits) {
+        bidInput.value = currentCredits;
+      }
+    });
+    bidMinus.addEventListener("click", () => {
+      bidInput.value--;
+      if (bidInput.value < price + 1) {
+        bidInput.value = price + 1;
+      }
+    });
+    const warningText = document.createElement("span");
+    bidButton.onclick = () => {
+      if (Number(bidInput.value) == bidInput.value) {
+        placeBid(item.id, bidInput.value, accessToken);
+        if (warningText) {
+          warningText.style.display = "none";
+        }
+      } else {
+        const containerBidsPrice = document.querySelector(
+          ".container-bidsPrice"
+        );
+        warningText.innerHTML =
+          "<p class='warningText' >Invalid bid, please check your bid amount and try again</p>";
+        containerBidsPrice.append(warningText);
+      }
+    };
+  }
 
   // render bid overview
   function getBidInformation() {

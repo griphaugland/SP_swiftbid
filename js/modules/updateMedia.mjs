@@ -6,6 +6,9 @@ export default async function updateMedia(value) {
   const name = localstorage.name;
   const token = localstorage.accessToken;
   const formFeedback = document.getElementById("media-error");
+  if (value === "") {
+    return (formFeedback.innerText = "Input field cannot be empty");
+  }
   const formInput = document.getElementById("media-url");
   const profileImage = document.getElementById("profile-image");
   const currentMediaSrc = document.getElementById("current-media-url");
@@ -26,11 +29,18 @@ export default async function updateMedia(value) {
   if (data.statusCode === 400) {
     formFeedback.innerText = "Invalid url, try again";
   } else {
+    formFeedback.innerHTML =
+      '<img height="20" width="20" alt="sucess icon" src="../../media/circle-check-regular.svg">';
+    setTimeout(() => {
+      formFeedback.innerText = "";
+    }, 2500);
     currentMediaSrc.value = value;
     profileImage.src = value;
     newMediaSrc.value = "";
     console.log(data);
     updateLocalStorage(name, token);
-    renderNav();
+    setTimeout(() => {
+      renderNav();
+    }, 2000);
   }
 }

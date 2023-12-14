@@ -253,12 +253,17 @@
         justify-content: center;
       }
       .welcome-text {
-        font-size: 16px;
+        height: 100%;
         left: 1rem;
         font-weight: 300;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         h5 {
-          font-family: $font-style-script;
+          margin-top: 1rem;
+          font-family: $font-custom;
           color: $secondary;
+          height: 40px;
           font-size: 48px;
           font-weight: 400;
           margin-bottom: 0.5rem;
@@ -790,4 +795,10 @@
 .my-profile-account-image:hover {
   filter: brightness(0.8);
   cursor: pointer;
+}
+.no-results {
+  position: absolute;
+  justify-self: center;
+  color: $subtle;
+  margin-top: 3rem;
 }

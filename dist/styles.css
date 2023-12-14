@@ -1,6 +1,7 @@
 @charset "UTF-8";
 /* $tertiary: #fd6a01; */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Style+Script&family=Syncopate:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Borel&display=swap");
 .login-main,
 .register-main {
   justify-content: center !important;
@@ -270,13 +271,18 @@
   }
 }
 .feed-layout main section:nth-of-type(1) .welcome-text {
-  font-size: 16px;
+  height: 100%;
   left: 1rem;
   font-weight: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .feed-layout main section:nth-of-type(1) .welcome-text h5, .feed-layout main section:nth-of-type(1) .welcome-text .h5 {
-  font-family: "Style Script", cursive;
+  margin-top: 1rem;
+  font-family: "Borel", cursive;
   color: #141918;
+  height: 40px;
   font-size: 48px;
   font-weight: 400;
   margin-bottom: 0.5rem;
@@ -860,6 +866,13 @@
   cursor: pointer;
 }
 
+.no-results {
+  position: absolute;
+  justify-self: center;
+  color: #8c8c8c;
+  margin-top: 3rem;
+}
+
 /* $tertiary: #fd6a01; */
 /* $tertiary: #fd6a01; */
 header {
@@ -1269,7 +1282,7 @@ header .credits-label {
 }
 
 .font-style-script {
-  font-family: "Style Script", cursive;
+  font-family: "Borel", cursive;
   font-weight: 400;
   font-size: 2rem;
   color: #8c8c8c;
@@ -1277,6 +1290,10 @@ header .credits-label {
 
 .font-style-body {
   font-family: "Roboto", sans-serif !important;
+}
+
+.font-style-custom {
+  font-family: "Borel", cursive !important;
 }
 
 /* $tertiary: #fd6a01; */

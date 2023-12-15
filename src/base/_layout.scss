@@ -644,6 +644,7 @@
       .profile-user-info-container {
         padding-inline: 2rem !important;
         min-height: 140px;
+        margin-right: 0rem !important;
         #btn-edit-profile {
           margin-left: auto;
         }
@@ -675,6 +676,14 @@
       }
     }
     @media (max-width: 930px) {
+      .profile-user-info-container {
+        padding-inline: 2rem !important;
+        min-height: 140px;
+        margin-right: auto !important;
+        #btn-edit-profile {
+          margin-left: auto;
+        }
+      }
     }
     @media (max-width: 610px) {
       .profile-user-details-container {

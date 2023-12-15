@@ -5,7 +5,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.1rem;
-  min-height: 30.5px;
   li {
     background-color: $button-color;
     color: rgb(255, 255, 255);
@@ -55,4 +54,7 @@
 }
 #profile-form {
   gap: 0rem;
+}
+#preview-button {
+  margin-right: auto !important;
 }

@@ -34,6 +34,7 @@ export default function openCreateListing() {
         </div>
         <p id="profile-error" class="create-error-message text-danger"></p>
         <div class="modal-footer">
+        <a type="button" class="btn btn-secondary" id="preview-button" target="_blank">Preview</a>
           <button type="button" class="btn btn-secondary close-create-modal" data-bs-dismiss="modal">Close</button>
           <button type="submit" id="createListingPopUpSubmit" class="btn btn-primary">Save</button>
         </form>
@@ -103,6 +104,7 @@ export default function openCreateListing() {
           item.remove();
         });
       });
+      tagInput.value = "";
     }
   });
 

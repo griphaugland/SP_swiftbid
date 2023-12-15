@@ -5,10 +5,54 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.1rem;
+  min-height: 30.5px;
   li {
     background-color: $button-color;
     color: rgb(255, 255, 255);
     border-radius: 20px;
     padding: 0.2rem 0.5rem;
   }
+}
+.tag-value {
+  min-height: 34.5px;
+  min-width: 80.3px;
+  .tag-value-text {
+    margin-bottom: 0rem;
+    color: $primary !important;
+  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  div {
+    position: absolute;
+    display: none;
+    color: rgb(218, 90, 90) !important;
+  }
+}
+.tag-value:hover {
+  p {
+    color: transparent;
+  }
+  background-color: $primary;
+  border: 2px solid $tertiary;
+  cursor: pointer;
+  div {
+    display: flex;
+  }
+}
+#profile-error {
+  min-height: 40px;
+  padding-inline: 2rem;
+}
+.create-error-message {
+  font-size: 14px;
+  min-height: 16px;
+  padding-inline: 0rem;
+  padding-bottom: 0rem;
+  margin-bottom: 0rem;
+  font-weight: 300;
+}
+#profile-form {
+  gap: 0rem;
 }

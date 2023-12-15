@@ -790,6 +790,8 @@
   background-color: #8c8c8c;
   color: #ffffff;
   font-weight: 500;
+  display: none;
+  font-family: "Roboto", sans-serif;
 }
 .profile-main section .user-information-container .profile-user-info-container .profile-description {
   font-size: 1.3rem;
@@ -1246,6 +1248,21 @@ header .credits-label {
 
 #filter-ending-soon {
   color: gray;
+}
+
+.tag-container {
+  margin-left: 0rem;
+  padding-left: 0rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.1rem;
+}
+.tag-container li {
+  background-color: rgb(76, 133, 178);
+  color: rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 0.2rem 0.5rem;
 }
 
 /* $tertiary: #fd6a01; */

@@ -1,11 +1,5 @@
 export default function popUpEditMedia(data) {
   const modalContainer = document.createElement("div");
-  let path;
-  if (window.location.pathname === "/listings/listing/") {
-    path = "../../auth/login";
-  } else {
-    path = "../auth/login";
-  }
   modalContainer.innerHTML = `
   <div class="modal fade" id="MediaPopUp" tabindex="-1" aria-labelledby="MediaPopUpLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -48,8 +42,8 @@ export default function popUpEditMedia(data) {
   profileImagePopUp.src = data.avatar;
   currentMediaSrc.value = data.avatar;
   currentMediaSrc.disabled = "true";
-  var myModal = new bootstrap.Modal(document.getElementById("MediaPopUp"), {
+  var MediaModal = new bootstrap.Modal(document.getElementById("MediaPopUp"), {
     backdrop: "static", // You can set the backdrop option to "static" or "true" if needed.
   });
-  myModal.show();
+  MediaModal.show();
 }

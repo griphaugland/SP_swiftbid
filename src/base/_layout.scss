@@ -724,6 +724,8 @@
         background-color: $subtle;
         color: $primary;
         font-weight: 500;
+        display: none;
+        font-family: $font-body;
       }
       .profile-description {
         font-size: 1.3rem;

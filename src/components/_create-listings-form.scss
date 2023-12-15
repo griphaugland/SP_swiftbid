@@ -1,0 +1,14 @@
+.tag-container {
+  margin-left: 0rem;
+  padding-left: 0rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.1rem;
+  li {
+    background-color: $button-color;
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+    padding: 0.2rem 0.5rem;
+  }
+}

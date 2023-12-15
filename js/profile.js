@@ -8,6 +8,7 @@ import { startLoading, stopLoading } from "./modules/loader.mjs";
 import popUpEditMedia from "./modules/popUpEditMedia.mjs";
 import updateMedia from "./modules/updateMedia.mjs";
 import isLoggedIn from "./modules/isLoggedIn.mjs";
+import openCreateListing from "./modules/openCreateListing.mjs";
 // Variables
 const container = document.getElementById("winnings-container");
 const usernameContainer = document.querySelector(".profile-username");
@@ -20,12 +21,7 @@ const profileImageContainer = document.querySelector(
 );
 const mediaForm = document.getElementById("media-form");
 const profileButton = document.querySelector(".button-invisible");
-const editBtn = document.createElement("button");
-editBtn.id = "btn-edit-profile";
-editBtn.classList.add("btn");
-editBtn.classList.add("btn-secondary");
-editBtn.innerText = "Edit Profile";
-
+const editBtn = document.getElementById("btn-edit-profile");
 // Verify user with params
 let joke = await getJoke();
 let params = new URLSearchParams(window.location.search);
@@ -42,8 +38,9 @@ if (isLoggedIn()) {
     }
     if (params.get("user") === data.name) {
       //my profile
-      console.log("SHOW EDIT BUTTON");
-      usernameContainer.appendChild(editBtn);
+      editBtn.style.display = "flex";
+      editBtn.disabled = false;
+      editBtn.onclick = () => popUpEditMedia(data);
       profileButton.addEventListener("click", () => {
         popUpEditMedia(data);
         setTimeout(() => {
@@ -53,17 +50,20 @@ if (isLoggedIn()) {
           );
           profileImagePopUp.src = data.avatar;
           currentMediaSrc.value = data.avatar;
-          currentMediaSrc.disabled = "true";
+          currentMediaSrc.disabled = true;
         }, 1000);
       });
       if (params.has("create")) {
-        console.log("open CREATE MODAL");
+        openCreateListing();
       }
     } else {
       //other peoples profile
       profileButton.disabled = true;
+      editBtn.style.display = "none";
+      editBtn.disabled = true;
     }
-    usernameContainer.innerText = "@" + content.name;
+    let usernameText = `@${content.name}`;
+    usernameContainer.prepend(usernameText);
     listingsNumber.innerText = content._count.listings;
     winsNumber.innerText = content.wins.length;
     const winCards = await createWinsCards(content.wins);

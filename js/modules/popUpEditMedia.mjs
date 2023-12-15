@@ -38,9 +38,16 @@ export default function popUpEditMedia(data) {
   document.body.appendChild(modalContainer);
   const profileImagePopUp = document.querySelector(".profile-image-popup");
   const currentMediaSrc = document.getElementById("current-media-url");
+  const MediaSrc = document.getElementById("media-url");
   modalContainer.style.position = "absolute";
   profileImagePopUp.src = data.avatar;
   currentMediaSrc.value = data.avatar;
+  currentMediaSrc.disabled = true;
+  MediaSrc.addEventListener("keyup", () => {
+    if (MediaSrc.value.length > 10) {
+      profileImagePopUp.src = MediaSrc.value;
+    }
+  });
   currentMediaSrc.disabled = "true";
   var MediaModal = new bootstrap.Modal(document.getElementById("MediaPopUp"), {
     backdrop: "static", // You can set the backdrop option to "static" or "true" if needed.

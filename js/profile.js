@@ -43,15 +43,6 @@ if (isLoggedIn()) {
       editBtn.onclick = () => popUpEditMedia(data);
       profileButton.addEventListener("click", () => {
         popUpEditMedia(data);
-        setTimeout(() => {
-          const currentMediaSrc = document.getElementById("current-media-url");
-          const profileImagePopUp = document.querySelector(
-            ".profile-image-popup"
-          );
-          profileImagePopUp.src = data.avatar;
-          currentMediaSrc.value = data.avatar;
-          currentMediaSrc.disabled = true;
-        }, 1000);
       });
       if (params.has("create")) {
         openCreateListing();

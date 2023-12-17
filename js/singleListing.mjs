@@ -9,7 +9,6 @@ export async function SingleListingFetchFromURL() {
   if (params.has("id")) {
     const id = params.get("id");
     const content = await fetchContent("getSingle", id);
-    console.log(content);
     await renderSingleCard(content, container);
   } else if (params.has("preview")) {
     const localStorageData = getLocalStorageData("all");

@@ -28,7 +28,6 @@ if (isLoggedIn()) {
   bidButton.disabled = true;
   bidButton.innerText = "Log in to bid";
 }
-
 export function isValidImageSrc(src, callback) {
   let img = new Image();
   img.onload = () => callback(true);
@@ -92,7 +91,6 @@ export function updateCardWithMedia(item, media, container) {
   let credits = item._count.bids === 1 ? "credit" : "credits";
   let tagContainer = document.querySelector(".tag-container");
   item.tags.forEach((tagValue) => {
-    // Check if the tag already exists
     const existingTag = Array.from(tagContainer.children).find((tag) => {
       return tag.querySelector(".tag-value-text").innerText === tagValue;
     });
@@ -202,7 +200,6 @@ export function updateCardWithMedia(item, media, container) {
   if (isLoggedIn()) {
     if (getLocalStorageData("name") === item.seller.name) {
       const postSettings = document.createElement("div");
-
       postSettings.classList.add("dropdown-postsettings");
       const dropdownButton = document.createElement("a");
       dropdownButton.setAttribute("data-bs-toggle", "dropdown");
@@ -264,7 +261,11 @@ export function updateCardWithMedia(item, media, container) {
         sessionStorage.setItem("editListingID", item.id);
         window.location.href = "/profile/" + "?" + params;
       });
-
+      bidInput.value = "Your listing";
+      bidInput.disabled = true;
+      bidButton.disabled = true;
+      bidPlus.disabled = true;
+      bidMinus.disabled = true;
       if (!params.has("preview")) {
         listingTitle.appendChild(postSettings);
       }

@@ -113,7 +113,7 @@ if (isLoggedIn()) {
         });
       } else {
         userListingsContainer.innerHTML =
-          '<h2 class="no-results">No wins found</h2>';
+          '<h2 class="no-results">No listings found</h2>';
       }
     }
     renderWins();

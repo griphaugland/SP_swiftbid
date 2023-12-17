@@ -915,6 +915,14 @@
   color: #8c8c8c !important;
 }
 
+.card-image-container {
+  cursor: default;
+}
+
+.card-image-container:hover {
+  cursor: pointer;
+}
+
 /* $tertiary: #fd6a01; */
 /* $tertiary: #fd6a01; */
 header {

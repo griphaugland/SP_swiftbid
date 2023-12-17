@@ -837,3 +837,9 @@
 .footer-container {
   color: $subtle !important;
 }
+.card-image-container {
+  cursor: default;
+}
+.card-image-container:hover {
+  cursor: pointer;
+}

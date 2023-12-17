@@ -114,6 +114,9 @@ export function updateCardWithMedia(item, media, container) {
   img.height = 100;
   img.width = 200;
   img.alt = `Alt text:${item.title}`;
+  imageContainer.addEventListener("click", () => {
+    window.location.href = `../listings/listing/?id=${item.id}`;
+  });
 
   imageContainer.appendChild(img);
   card.appendChild(imageContainer);

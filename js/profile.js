@@ -35,7 +35,11 @@ if (isLoggedIn()) {
     window.location.href = window.location.pathname + "?" + params;
   } else {
     const content = await fetchProfile(params.get("user"));
-    if (content.avatar !== "") {
+    if (
+      content.avatar !== "" &&
+      content.avatar !== null &&
+      content.avatar !== undefined
+    ) {
       profileImage.src = content.avatar;
     }
     if (params.get("user") === data.name) {

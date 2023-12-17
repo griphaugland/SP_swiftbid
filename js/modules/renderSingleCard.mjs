@@ -89,25 +89,29 @@ export function updateCardWithMedia(item, media, container) {
     color = "green";
   }
   let credits = item._count.bids === 1 ? "credit" : "credits";
-  let tagContainer = document.createElement("ul");
-  tagContainer.classList.add("tag-container");
-  console.log(item);
-  item.tags.forEach((item) => {
-    const tag = document.createElement("li");
-    const viewTag = document.createElement("div");
-    const tagText = document.createElement("p");
-    tagText.classList.add("tag-value-text");
-    tag.classList.add("tag-value");
-    viewTag.classList.add("viewTag");
-    viewTag.innerHTML = "View";
-    tagText.innerText = item;
-    tag.addEventListener("click", () => {
-      window.location.href = `../../listings/?search=${item}`;
+  let tagContainer = document.querySelector(".tag-container");
+  item.tags.forEach((tagValue) => {
+    // Check if the tag already exists
+    const existingTag = Array.from(tagContainer.children).find((tag) => {
+      return tag.querySelector(".tag-value-text").innerText === tagValue;
     });
-    tag.append(tagText, viewTag);
-    tagContainer.append(tag);
+
+    if (!existingTag) {
+      const tag = document.createElement("li");
+      const viewTag = document.createElement("div");
+      const tagText = document.createElement("p");
+      tagText.classList.add("tag-value-text");
+      tag.classList.add("tag-value");
+      viewTag.classList.add("viewTag");
+      viewTag.innerHTML = "View";
+      tagText.innerText = tagValue;
+      tag.addEventListener("click", () => {
+        window.location.href = `../../listings/?search=${tagValue}`;
+      });
+      tag.append(tagText, viewTag);
+      tagContainer.append(tag);
+    }
   });
-  titleBidsPrice.append(tagContainer);
   function getHighestAmount() {
     if (item.bids.length === 0) {
       return 0;

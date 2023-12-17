@@ -110,8 +110,6 @@ export default function openEditListing() {
         tagArr.push(item);
         let tagValueItems = document.querySelectorAll(".tag-value");
         tagCounter.innerText = `Added tags (${tagArr.length}):`;
-        console.log(tagArr);
-        console.log(tagValueItems);
         tagValueItems.forEach((item) => {
           item.addEventListener("click", () => {
             const tagToRemove = item.querySelector(".tag-value-text").innerText;
@@ -125,7 +123,6 @@ export default function openEditListing() {
         });
         tagInput.value = "";
       });
-      console.log(tagArr);
       mediaUrlInput.value = parameterData.media;
       handleMediaUrlInput();
       modalHeaderLoader.remove();
@@ -170,8 +167,6 @@ export default function openEditListing() {
       tagArr.push(tagValue);
       let tagValueItems = document.querySelectorAll(".tag-value");
       tagCounter.innerText = `Added tags (${tagArr.length}):`;
-      console.log(tagArr);
-      console.log(tagValueItems);
       tagValueItems.forEach((item) => {
         item.addEventListener("click", () => {
           const tagToRemove = item.querySelector(".tag-value-text").innerText;
@@ -299,14 +294,12 @@ export default function openEditListing() {
     mediaFeedback.append(imageLoader);
     setTimeout(async () => {
       if (await isImgUrl(mediaUrlInput.value)) {
-        console.log(`ValidImage`);
         mediaFeedback.innerHTML = `<img height="20" width="20" alt="sucess icon" src="../../media/circle-check-regular.svg"><p class="response-text-create" id="valid-image">Valid image</p>`;
         mediaUrlInput.disabled = true;
         mediaFeedback.append(editCurrentImageLink);
         mediaIsValid = true;
         return true;
       } else {
-        console.log(`FalseImage`);
         mediaIsValid = false;
         mediaFeedback.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class="response-text-create">Not a valid image</p>`;
         return false;
@@ -323,14 +316,12 @@ export default function openEditListing() {
     mediaFeedback.append(imageLoader);
     setTimeout(async () => {
       if (await isImgUrl(mediaUrlInput.value)) {
-        console.log(`ValidImage`);
         mediaIsValid = true;
         mediaFeedback.innerHTML = `<img height="20" width="20" alt="sucess icon" src="../../media/circle-check-regular.svg"><p class="response-text-create">Valid image</p>`;
         mediaUrlInput.disabled = true;
         mediaFeedback.append(editCurrentImageLink);
         return true;
       } else {
-        console.log(`FalseImage`);
         mediaIsValid = false;
         mediaFeedback.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class="response-text-create">Not a valid image</p>`;
         return false;

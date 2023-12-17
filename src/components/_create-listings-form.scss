@@ -125,6 +125,17 @@
   background-color: rgb(13, 35, 53);
   bottom: 0;
   border-top: 10px solid #6ab060;
+  @media (max-width: 610px) {
+    height: 15svh;
+    flex-direction: column;
+    gap: 0rem;
+    .preview-text {
+      bottom: 10svh;
+      margin-left: auto;
+      margin-right: auto;
+      right: 6rem;
+    }
+  }
 }
 .warning {
   color: rgb(223, 177, 78) !important;

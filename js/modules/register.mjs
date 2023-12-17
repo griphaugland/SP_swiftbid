@@ -75,7 +75,6 @@ if (!loggedIn) {
         }
       );
       const data = await res.json();
-      console.log(data);
       if (data.status === "Bad Request") {
         stopLoading("register");
         response.innerHTML = "";

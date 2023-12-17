@@ -334,7 +334,6 @@ export function updateCardWithMedia(item, media, container) {
     bidsList.innerHTML = "";
     /* console.log(item.bids); */
     let sorted = item.bids.sort((a, b) => a.amount - b.amount);
-    console.log(sorted);
     item.bids.forEach((item) => {
       let listItem = document.createElement("li");
       let bidderName = document.createElement("a");

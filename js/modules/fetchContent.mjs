@@ -20,8 +20,6 @@ export default async function fetchContent(typeOfRequest, id) {
   async function getAll() {
     let params = new URLSearchParams(window.location.search);
     let offset = params.get("offset") || 0;
-    console.log(params);
-    console.log(offset);
     const filterEndingSoon = document.getElementById("filter-ending-soon");
     const filterRecentlyListed = document.getElementById(
       "filter-recently-listed"
@@ -50,7 +48,6 @@ export default async function fetchContent(typeOfRequest, id) {
       url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=asc&_bids=true&_seller=true&limit=12&offset=${offset}`;
     }
 
-    console.log(url);
     const res = await fetch(url, {
       method: `GET`,
       headers: {
@@ -58,7 +55,6 @@ export default async function fetchContent(typeOfRequest, id) {
       },
     });
     const data = await res.json();
-    console.log(data);
     checkForErrors(data);
     return data;
   }
@@ -83,7 +79,6 @@ export default async function fetchContent(typeOfRequest, id) {
     } else {
       url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=asc&_bids=true&_seller=true&limit=12`;
     }
-    console.log(url);
     const res = await fetch(url, {
       method: `GET`,
       headers: {
@@ -91,7 +86,6 @@ export default async function fetchContent(typeOfRequest, id) {
       },
     });
     const data = await res.json();
-    console.log(data);
     checkForErrors(data);
     return data;
   }
@@ -111,7 +105,6 @@ export default async function fetchContent(typeOfRequest, id) {
       },
     });
     const data = await res.json();
-    console.log(data);
     checkForErrors(data);
     return data;
   }

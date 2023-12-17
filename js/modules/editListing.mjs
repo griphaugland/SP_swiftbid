@@ -10,7 +10,6 @@ export default async function editListing(data, id) {
     tags: data.tags,
     media: data.media,
   };
-  console.log(post);
   const res = await fetch(url, {
     method: `PUT`,
     headers: {
@@ -19,8 +18,6 @@ export default async function editListing(data, id) {
     },
     body: JSON.stringify(post),
   });
-  console.log(res);
-  console.log(data);
   const responseData = await res.json();
   const feedback = document.getElementById("profile-error");
   if (res.ok) {
@@ -28,5 +25,4 @@ export default async function editListing(data, id) {
   } else {
     feedback.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class='red'>${res.statusText}</p>`;
   }
-  console.log(responseData);
 }

@@ -819,19 +819,23 @@
   margin-top: 3rem;
 }
 #view-users-listings,
-#view-won-listings {
+#view-won-listings,
+#view-bids-on-listings {
   color: $subtle;
   cursor: pointer;
 }
 #view-users-listings:hover,
-#view-won-listings:hover {
+#view-won-listings:hover,
+#view-bids-on-listings:hover {
   color: $secondary;
 }
 #view-users-listings.active,
-#view-won-listings.active {
+#view-won-listings.active,
+#view-bids-on-listings.active {
   color: $secondary;
 }
-#winnings-container {
+#winnings-container,
+#profile-bids-listings-container {
   display: none;
 }
 .footer-container {

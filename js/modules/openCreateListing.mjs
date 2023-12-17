@@ -256,7 +256,6 @@ export default function openCreateListing() {
       media = false;
     }
     const dateInputValue = endsAtInput.value;
-    console.log(checkDate(dateInputValue));
     const sendingDate = new Date(dateInputValue);
     if (checkDate(dateInputValue)) {
       date = true;
@@ -284,10 +283,20 @@ export default function openCreateListing() {
           name: localStorageData.name,
         },
       };
-      console.log(data);
       openPreviewListing(data);
     } else {
-      console.log(title, description, tags, "media", media, "date", date);
+      console.log(
+        "title",
+        title,
+        "description",
+        description,
+        "tags",
+        tags,
+        "media",
+        media,
+        "date",
+        date
+      );
       console.log("error found");
     }
   }
@@ -309,7 +318,6 @@ export default function openCreateListing() {
   async function isImgUrl(url) {
     const img = new Image();
     img.src = url;
-    console.log(`Ran isImgUrl function with boolean return:`);
     return new Promise((resolve) => {
       img.onerror = () => resolve(false);
       img.onload = () => resolve(true);
@@ -338,14 +346,12 @@ export default function openCreateListing() {
     mediaFeedback.append(imageLoader);
     setTimeout(async () => {
       if (await isImgUrl(mediaUrlInput.value)) {
-        console.log(`ValidImage`);
         mediaFeedback.innerHTML = `<img height="20" width="20" alt="sucess icon" src="../../media/circle-check-regular.svg"><p class="response-text-create" id="valid-image">Valid image</p>`;
         mediaUrlInput.disabled = true;
         mediaFeedback.append(editCurrentImageLink);
         mediaIsValid = true;
         return true;
       } else {
-        console.log(`FalseImage`);
         mediaIsValid = false;
         mediaFeedback.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class="response-text-create">Not a valid image</p>`;
         return false;
@@ -362,14 +368,12 @@ export default function openCreateListing() {
     mediaFeedback.append(imageLoader);
     setTimeout(async () => {
       if (await isImgUrl(mediaUrlInput.value)) {
-        console.log(`ValidImage`);
         mediaIsValid = true;
         mediaFeedback.innerHTML = `<img height="20" width="20" alt="sucess icon" src="../../media/circle-check-regular.svg"><p class="response-text-create">Valid image</p>`;
         mediaUrlInput.disabled = true;
         mediaFeedback.append(editCurrentImageLink);
         return true;
       } else {
-        console.log(`FalseImage`);
         mediaIsValid = false;
         mediaFeedback.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class="response-text-create">Not a valid image</p>`;
         return false;

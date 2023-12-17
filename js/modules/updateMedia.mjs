@@ -37,7 +37,6 @@ export default async function updateMedia(value) {
     currentMediaSrc.value = value;
     profileImage.src = value;
     newMediaSrc.value = "";
-    console.log(data);
     updateLocalStorage(name, token);
     setTimeout(() => {
       renderNav();

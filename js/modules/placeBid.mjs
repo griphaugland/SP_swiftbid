@@ -16,7 +16,6 @@ export default async function placeBid(id, value, token) {
     },
     body: JSON.stringify(bid),
   });
-  console.log(res);
   const data = await res.json();
   updateLocalStorage(name, token);
   SingleListingFetchFromURL();

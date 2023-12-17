@@ -1,5 +1,4 @@
 export function startLoading(elementID) {
-  console.log(elementID);
   const button = document.getElementById(elementID);
   button.innerHTML = "";
   button.innerHTML = `

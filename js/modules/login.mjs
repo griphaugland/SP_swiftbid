@@ -31,7 +31,6 @@ if (!loggedIn) {
         body: JSON.stringify(user),
       });
       const data = await res.json();
-      console.log(data);
       if (data.errors) {
         stopLoading("login");
         if (data.errors.statusCode === 429) {

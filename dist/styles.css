@@ -892,22 +892,26 @@
 }
 
 #view-users-listings,
-#view-won-listings {
+#view-won-listings,
+#view-bids-on-listings {
   color: #8c8c8c;
   cursor: pointer;
 }
 
 #view-users-listings:hover,
-#view-won-listings:hover {
+#view-won-listings:hover,
+#view-bids-on-listings:hover {
   color: #141918;
 }
 
 #view-users-listings.active,
-#view-won-listings.active {
+#view-won-listings.active,
+#view-bids-on-listings.active {
   color: #141918;
 }
 
-#winnings-container {
+#winnings-container,
+#profile-bids-listings-container {
   display: none;
 }
 
@@ -1449,6 +1453,19 @@ header .credits-label {
   background-color: rgb(13, 35, 53);
   bottom: 0;
   border-top: 10px solid #6ab060;
+}
+@media (max-width: 610px) {
+  .previewFooter {
+    height: 15svh;
+    flex-direction: column;
+    gap: 0rem;
+  }
+  .previewFooter .preview-text {
+    bottom: 10svh;
+    margin-left: auto;
+    margin-right: auto;
+    right: 6rem;
+  }
 }
 
 .warning {

@@ -19,7 +19,6 @@ export default async function postListing(data) {
     },
     body: JSON.stringify(post),
   });
-  console.log(res);
   const responseData = await res.json();
   const feedback = document.querySelector(".preview-text");
   sessionStorage.setItem("postID", responseData.id);
@@ -28,5 +27,4 @@ export default async function postListing(data) {
   } else {
     feedback.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class='red'>${res.statusText}</p>`;
   }
-  console.log(responseData);
 }

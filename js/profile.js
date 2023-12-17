@@ -11,6 +11,8 @@ import isLoggedIn from "./modules/isLoggedIn.mjs";
 import openCreateListing from "./modules/openCreateListing.mjs";
 import openEditListing from "./modules/openEditListing.mjs";
 import getProfileListings from "./modules/getProfileListings.mjs";
+import { getBidListings } from "./modules/getProfileListings.mjs";
+import fetchContent from "./modules/fetchContent.mjs";
 // Variables
 const container = document.getElementById("winnings-container");
 const usernameContainer = document.querySelector(".profile-username");
@@ -23,6 +25,12 @@ const profileImageContainer = document.querySelector(
 );
 const userListingsContainer = document.getElementById(
   "profile-listings-container"
+);
+const userBidListingsContainer = document.getElementById(
+  "profile-bids-listings-container"
+);
+const viewBidsOnListingsPosts = document.getElementById(
+  "view-bids-on-listings"
 );
 const mediaForm = document.getElementById("media-form");
 const profileButton = document.querySelector(".button-invisible");
@@ -71,25 +79,35 @@ if (isLoggedIn()) {
     const viewUsersPosts = document.getElementById("view-users-listings");
     const viewWonPosts = document.getElementById("view-won-listings");
     viewUsersPosts.addEventListener("click", () => {
-      console.log("Users posts");
-      if (viewWonPosts.classList.contains("active")) {
-        container.style.display = "none";
-        userListingsContainer.style.display = "grid";
+      if (!viewUsersPosts.classList.contains("active")) {
+        viewUsersPosts.classList.add("active");
         viewWonPosts.classList.remove("active");
-        viewUsersPosts.classList.add("active");
-      } else {
-        viewUsersPosts.classList.add("active");
+        viewBidsOnListingsPosts.classList.remove("active");
+        userListingsContainer.style.display = "grid";
+        container.style.display = "none";
+        userBidListingsContainer.style.display = "none";
       }
     });
+
     viewWonPosts.addEventListener("click", () => {
-      console.log("Won posts");
-      if (viewUsersPosts.classList.contains("active")) {
+      if (!viewWonPosts.classList.contains("active")) {
+        viewWonPosts.classList.add("active");
+        viewUsersPosts.classList.remove("active");
+        viewBidsOnListingsPosts.classList.remove("active");
         userListingsContainer.style.display = "none";
         container.style.display = "grid";
+        userBidListingsContainer.style.display = "none";
+      }
+    });
+
+    viewBidsOnListingsPosts.addEventListener("click", () => {
+      if (!viewBidsOnListingsPosts.classList.contains("active")) {
+        viewBidsOnListingsPosts.classList.add("active");
         viewUsersPosts.classList.remove("active");
-        viewWonPosts.classList.add("active");
-      } else {
-        viewWonPosts.classList.add("active");
+        viewWonPosts.classList.remove("active");
+        userListingsContainer.style.display = "none";
+        container.style.display = "none";
+        userBidListingsContainer.style.display = "grid";
       }
     });
     winsNumber.innerText = content.wins.length;
@@ -116,8 +134,24 @@ if (isLoggedIn()) {
           '<h2 class="no-results">No listings found</h2>';
       }
     }
+    const listingsBidOn = await getBidListings();
+    let listingBidOnArr = [];
+    listingsBidOn.map((item) => listingBidOnArr.push(item.listing.id));
+    const userBids = await createWinsCards(listingBidOnArr);
+    async function renderCurrentBidListing() {
+      userBidListingsContainer.innerHTML = "";
+      if (userBids && userBids.length > 0) {
+        userBids.forEach((item) => {
+          renderCard(item, userBidListingsContainer);
+        });
+      } else {
+        userBidListingsContainer.innerHTML =
+          '<h2 class="no-results">No bids on listings found</h2>';
+      }
+    }
     renderWins();
     renderUserListing();
+    renderCurrentBidListing();
   }
   userDescriptionContainer.innerHTML = "";
   userDescriptionContainer.innerHTML = `<div class='joke-container'><span>${joke.setup}</span><span>${joke.punchline}</span></div>`;

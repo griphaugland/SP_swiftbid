@@ -13,7 +13,6 @@ export async function SingleListingFetchFromURL() {
   } else if (params.has("preview")) {
     const localStorageData = getLocalStorageData("all");
     let tags = params.get("tags").split(",");
-    console.log(tags);
     if (tags.length === 1 && tags[0] === "") {
       tags = [];
     }

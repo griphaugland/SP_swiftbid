@@ -14,7 +14,6 @@ export async function pagination() {
       },
     });
     const data = await res.json();
-    console.log(data);
     checkForErrors(data);
     return data;
   }

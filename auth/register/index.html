@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SwiftBid | Register</title>
+    <link rel="stylesheet" href="../../dist/styles.css" />
+    <script src="../../js/modules/continueAsGuest.mjs" type="module"></script>
+    <script src="../../dist/js/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/modules/register.mjs" type="module"></script>
+  </head>
+  <body class="auth-layout">
+    <main class="register-main">
+      <section class="d-flex items-center justify-center">
+        <div class="d-flex items-center image-container-auth align-self-center justify-center">
+            <img src="../../media/swift-bid-logo-blue.png" class="img-fluid" />
+        </div>
+      </section>
+      <section class="d-flex items-center justify-center">
+        <div class="form-container w-100 d-flex align-items-center justify-content-center  ">
+            <form class="needs-validation" action="" novalidate>
+              <p class="md">REGISTER</p>
+
+              <!-- NAME -->
+              <div class="input-group has-validation mb-3 position-relative">
+                <input type="text" class="form-control input-name" placeholder="Name" id="validationCustomName" aria-describedby="inputGroup" minlength="2" required>
+              </div>
+
+               <!-- EMAIL -->
+              <div class="input-group has-validation mb-3 position-relative">
+                <input type="text" class="form-control input-username" placeholder="Email address" id="validationCustomUsername" aria-describedby="inputGroup" required>
+              </div>
+
+               <!-- PASSWORD -->
+              <div class="input-group has-validation position-relative mb-0">
+                <input type="password" class="form-control input-password" placeholder="Password" id="validationCustomPassword" aria-describedby="inputGroup" minlength="8" required>
+              </div>
+
+              <!-- ERRORS -->
+              <div class="res-container position-relative">
+                <div class=" m-1" id="response"></div>
+              </div>
+
+              <div class="button-container d-flex">
+                     <!-- REGISTRER -->
+                    <a class="btn btn-secondary" href="../login">LOGIN</a>
+                           <!-- SUBMIT -->
+                    <button class="btn btn-primary" type="submit" id="register" name="register">
+                            REGISTER
+                    </button>
+              </div>
+              <div class="guestbutton-container w-100"><a  id="guestbutton" href="../../feed/">Continue as guest</a></div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="">
+      <div class="footer-container">
+        <h5 class="font-style-script">SwiftBid</h5>
+      </div>
+    </footer>
+  </body>
+</html>

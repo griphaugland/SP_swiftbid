@@ -1,21 +1,21 @@
-import postListing from "./postListing.mjs";
 import { startLoading, stopLoading } from "./loader.mjs";
 import openPreviewListing from "./openPreviewPage.mjs";
 import getLocalStorageData from "./localStorage.mjs";
+import editListing from "./editListing.mjs";
 
-export default function openCreateListing() {
+export default function openEditListing() {
   const modalContainer = document.createElement("div");
   modalContainer.innerHTML = `
-    <div class="modal fade" id="createListingPopUp" tabindex="-1" aria-labelledby="createListingPopUpLabel" aria-hidden="true">
+    <div class="modal fade" id="editListingPopUp" tabindex="-1" aria-labelledby="editListingPopUpLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-    <form id="create-listing-form">
+    <form id="edit-listing-form">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="createListingPopUpLabel">Create a listing</h1>
+          <h1 class="modal-title fs-5" id="editListingPopUpLabel">Edit your listing</h1>
           <button type="button" class="btn-close close-create-modal" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <label class="mt-2" for="form-title">Give your listing a title:</label>
+            <label class="mt-2" for="form-title">Change your listing title:</label>
             <input type="text" class="form-control" id="form-title" name="form-title" placeholder="A beautiful statue of Obama">
             <p id="title-error" class="create-error-message text-danger"></p>
             <label class="mt-2" for="form-description">Describe your listing:</label>
@@ -33,14 +33,11 @@ export default function openCreateListing() {
             <label class="mt-2" for="form-media-url">Paste an image link:</label>
             <input type="text" class="form-control" id="form-media-url" name="form-media-url" placeholder="https://www.randomimageurl.com/beautiful-statue-of-obama">
             <p id="media-url-error" class="create-error-message text-danger"></p>
-            <label class="mt-2" for="form-endsAt">Enter the auction end date:</label>
-            <input type="date" class="form-control" id="form-endsAt" name="form-endsAt" placeholder="">
-            <p id="date-error" class="text-danger"></p>
         </div>
         <p id="profile-error" class="create-error-message text-danger"></p>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary close-create-modal" data-bs-dismiss="modal">Close</button>
-          <button type="submit" id="createListingPopUpSubmit" class="btn btn-primary">Preview & Post</button>
+          <button type="submit" id="editListingPopUpSubmit" class="btn btn-primary">Edit</button>
         </div>
       </div>
       </form>
@@ -49,7 +46,7 @@ export default function openCreateListing() {
 
   document.body.appendChild(modalContainer);
   let params = new URLSearchParams(window.location.search);
-  const createForm = document.getElementById("create-listing-form");
+  const editForm = document.getElementById("edit-listing-form");
   const closeCreateModal = document.querySelectorAll(".close-create-modal");
   const addBtn = document.getElementById("add-button");
   const tagUl = document.querySelector(".tag-container");
@@ -57,22 +54,19 @@ export default function openCreateListing() {
   const descriptionInput = document.getElementById("form-description");
   const tagInput = document.getElementById("form-tags");
   const mediaUrlInput = document.getElementById("form-media-url");
-  const endsAtInput = document.getElementById("form-endsAt");
   const feedback = document.getElementById("profile-error");
   const titleFeedback = document.getElementById("title-error");
   const descriptionFeedback = document.getElementById("description-error");
   const tagFeedback = document.getElementById("tag-error");
   const mediaFeedback = document.getElementById("media-url-error");
-  const dateFeedback = document.getElementById("date-error");
   const noTagswarning = document.createElement("p");
   const tagCounter = document.querySelector("#tagCounter");
-  const submitBtn = document.getElementById("createListingPopUpSubmit");
-  const imageLoader = document.createElement("div");
+  const submitBtn = document.getElementById("editListingPopUpSubmit");
   let localStorageData = getLocalStorageData("all");
   let mediaIsValid;
   let tagArr = [];
-  if (params.has("title") && params.has("endsAt")) {
-    const modalHeader = document.querySelector("#createListingPopUpLabel");
+  if (params.has("title")) {
+    const modalHeader = document.querySelector("#editListingPopUpLabel");
     modalHeader.style.display = "flex";
     modalHeader.style.alignItems = "center";
     const modalHeaderLoader = document.createElement("div");
@@ -85,13 +79,11 @@ export default function openCreateListing() {
     modalHeader.append(modalHeaderLoader);
     setTimeout(() => {
       const localStorageData = getLocalStorageData("all");
-      tagArr = [];
       let parameterData = {
         title: params.get("title"),
         description: params.get("description") || "",
         tags: params.get("tags").split(",") || [],
         media: params.get("media").split(","),
-        endsAt: params.get("endsAt"),
         _count: {},
         bids: [],
         seller: {
@@ -116,13 +108,28 @@ export default function openCreateListing() {
         tagValueLI.id = `${count++}-tag`;
         tagUl.append(tagValueLI);
         tagArr.push(item);
+        let tagValueItems = document.querySelectorAll(".tag-value");
+        tagCounter.innerText = `Added tags (${tagArr.length}):`;
+        console.log(tagArr);
+        console.log(tagValueItems);
+        tagValueItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            const tagToRemove = item.querySelector(".tag-value-text").innerText;
+            const indexToRemove = tagArr.indexOf(tagToRemove);
+            if (indexToRemove !== -1) {
+              tagArr.splice(indexToRemove, 1);
+            }
+            item.remove();
+            tagCounter.innerText = `Added tags (${tagArr.length}):`;
+          });
+        });
+        tagInput.value = "";
       });
+      console.log(tagArr);
       mediaUrlInput.value = parameterData.media;
-      dateFeedback.innerHTML =
-        '<p class="response-text-create warning">Please input date again</p>';
+      handleMediaUrlInput();
       modalHeaderLoader.remove();
-    }, 1000);
-    handleMediaUrlInput();
+    }, 500);
   }
 
   if (tagUl.children.length === 0) {
@@ -163,6 +170,8 @@ export default function openCreateListing() {
       tagArr.push(tagValue);
       let tagValueItems = document.querySelectorAll(".tag-value");
       tagCounter.innerText = `Added tags (${tagArr.length}):`;
+      console.log(tagArr);
+      console.log(tagValueItems);
       tagValueItems.forEach((item) => {
         item.addEventListener("click", () => {
           const tagToRemove = item.querySelector(".tag-value-text").innerText;
@@ -194,7 +203,6 @@ export default function openCreateListing() {
       window.location.href = window.location.pathname + "?" + params;
     });
   });
-
   function validateListing() {
     const mediaResponseText = document.getElementById("#valid-image");
     let title;
@@ -229,67 +237,46 @@ export default function openCreateListing() {
     } else {
       media = false;
     }
-    const dateInputValue = endsAtInput.value;
-    console.log(checkDate(dateInputValue));
-    const sendingDate = new Date(dateInputValue);
-    if (checkDate(dateInputValue)) {
-      date = true;
-    } else {
-      date = false;
-    }
     if (
       title === true &&
       description === true &&
       tags === true &&
-      media === true &&
-      date === true
+      media === true
     ) {
       let data = {
         title: titleInput.value,
         description: descriptionInput.value || "",
         tags: tagArr || [],
         media: mediaArr,
-        endsAt: sendingDate,
-        _count: {},
-        bids: [],
-        seller: {
-          avatar: localStorageData.avatar,
-          email: localStorageData.email,
-          name: localStorageData.name,
-        },
       };
-      console.log(data);
-      openPreviewListing(data);
+      editListing(data, params.get("id"));
+      setTimeout(() => {
+        window.location.href = `/listings/listing/` + "?" + params;
+      }, 1500);
     } else {
-      console.log(title, description, tags, "media", media, "date", date);
+      console.log(
+        "title",
+        title,
+        "description",
+        description,
+        "tags",
+        tags,
+        "media",
+        media
+      );
       console.log("error found");
-    }
-  }
-  function checkDate(date) {
-    const convertedDate = new Date(date);
-    const currentDate = new Date();
-    if (convertedDate.getTime() < currentDate.getTime()) {
-      dateFeedback.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class="response-text-create">Date is invalid, cannot be in the past</p>`;
-      return false;
-    } else if (isNaN(convertedDate.getTime())) {
-      dateFeedback.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class="response-text-create">Date is invalid, please check your date again</p>`;
-      return false;
-    } else {
-      console.log("Date is valid");
-      dateFeedback.innerHTML = "";
-      return true;
     }
   }
   async function isImgUrl(url) {
     const img = new Image();
     img.src = url;
-    console.log(`Ran isImgUrl function with boolean return:`);
     return new Promise((resolve) => {
       img.onerror = () => resolve(false);
       img.onload = () => resolve(true);
     });
   }
 
+  const imageLoader = document.createElement("div");
   imageLoader.classList.add("image-loader-container");
   imageLoader.innerHTML = `
   <div class="spinner-container w-100 d-flex align-items-center justify-content-center h-25">
@@ -356,12 +343,12 @@ export default function openCreateListing() {
     }
   });
 
-  createForm.addEventListener("submit", (e) => {
+  editForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    startLoading("createListingPopUpSubmit");
+    startLoading("editListingPopUpSubmit");
     validateListing();
-    stopLoading("createListingPopUpSubmit");
-    submitBtn.innerText = "Post";
+    stopLoading("editListingPopUpSubmit");
+    submitBtn.innerText = "Edit";
   });
 
   tagInput.addEventListener("keypress", function (event) {
@@ -370,15 +357,12 @@ export default function openCreateListing() {
       addBtn.click();
     }
   });
-  endsAtInput.addEventListener("change", () => {
-    checkDate(endsAtInput.value);
-  });
 
-  var createListingModal = new bootstrap.Modal(
-    document.getElementById("createListingPopUp"),
+  var editListingModal = new bootstrap.Modal(
+    document.getElementById("editListingPopUp"),
     {
       backdrop: "static",
     }
   );
-  createListingModal.show();
+  editListingModal.show();
 }

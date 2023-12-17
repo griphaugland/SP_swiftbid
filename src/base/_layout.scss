@@ -84,7 +84,7 @@
     display: flex;
     margin-left: 25px;
     .response-text {
-      color: black;
+      color: black !important;
       font-weight: 500;
       width: 100%;
     }
@@ -505,7 +505,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 47.3px;
+  min-height: 47.3px;
+  flex-wrap: wrap;
 }
 #listing-title-price-container {
   display: flex;
@@ -640,11 +641,13 @@
     height: 100%;
     overflow: hidden;
     @media (max-width: 1230px) {
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       .profile-user-info-container {
         padding-inline: 2rem !important;
         min-height: 140px;
         margin-right: 0rem !important;
+        margin-top: 2rem;
         #btn-edit-profile {
           margin-left: auto;
         }
@@ -679,7 +682,8 @@
       .profile-user-info-container {
         padding-inline: 2rem !important;
         min-height: 140px;
-        margin-right: auto !important;
+        margin-right: 0rem !important;
+        margin-top: 0rem;
         #btn-edit-profile {
           margin-left: auto;
         }
@@ -723,6 +727,7 @@
     .profile-user-info-container {
       margin-right: auto;
       color: $button-color;
+      margin-top: 0rem;
       .profile-username {
         display: flex;
         align-items: center;

@@ -6,9 +6,21 @@
   margin: 0 auto;
   padding: 0;
   @media (max-width: 1230px) {
+    #card-container-category1,
+    #card-container-category2 {
+      .card-listing:nth-of-type(4) {
+        display: none;
+      }
+    }
     max-width: 900px;
   }
   @media (max-width: 930px) {
+    #card-container-category1,
+    #card-container-category2 {
+      .card-listing:nth-of-type(4) {
+        display: block;
+      }
+    }
     max-width: 580px;
   }
   @media (max-width: 610px) {

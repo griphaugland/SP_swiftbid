@@ -38,7 +38,7 @@ export default async function fetchContent(typeOfRequest, id) {
       filterEndingSoon.style.color = "black";
       filterRecentlyListed.style.color = "gray";
       filterExpired.style.color = "black";
-      url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&sort=endsAt&sortOrder=desc&_bids=true&_seller=true&limit=12&offset=${offset}`;
+      url = `https://api.noroff.dev/api/v1/auction/listings/?_active=true&_bids=true&_seller=true&limit=12&offset=${offset}`;
     }
     if (Number(params.get("filter")) === 3) {
       filterEndingSoon.style.color = "black";

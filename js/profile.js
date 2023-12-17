@@ -9,6 +9,8 @@ import popUpEditMedia from "./modules/popUpEditMedia.mjs";
 import updateMedia from "./modules/updateMedia.mjs";
 import isLoggedIn from "./modules/isLoggedIn.mjs";
 import openCreateListing from "./modules/openCreateListing.mjs";
+import openEditListing from "./modules/openEditListing.mjs";
+
 // Variables
 const container = document.getElementById("winnings-container");
 const usernameContainer = document.querySelector(".profile-username");
@@ -46,6 +48,9 @@ if (isLoggedIn()) {
       });
       if (params.has("create")) {
         openCreateListing();
+      }
+      if (params.has("edit")) {
+        openEditListing();
       }
     } else {
       //other peoples profile

@@ -43,7 +43,7 @@ export default function popUpEditMedia(data) {
   profileImagePopUp.src = data.avatar;
   currentMediaSrc.value = data.avatar;
   currentMediaSrc.disabled = true;
-  MediaSrc.addEventListener("keyup", () => {
+  MediaSrc.addEventListener("paste", () => {
     if (MediaSrc.value.length > 10) {
       profileImagePopUp.src = MediaSrc.value;
     }

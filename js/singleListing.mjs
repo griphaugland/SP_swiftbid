@@ -18,12 +18,18 @@ export async function SingleListingFetchFromURL() {
     if (tags.length === 1 && tags[0] === "") {
       tags = [];
     }
-    console.log(typeof tags);
+    let mediaParam = params.get("media");
+    let mediaArray;
+    if (mediaParam && mediaParam !== "") {
+      mediaArray = mediaParam.split(",");
+    } else {
+      mediaArray = [];
+    }
     let parameterData = {
       title: params.get("title"),
       description: params.get("description") || "",
       tags: tags,
-      media: params.get("media").split(","),
+      media: mediaArray,
       endsAt: params.get("endsAt"),
       _count: {},
       bids: [],
@@ -38,6 +44,7 @@ export async function SingleListingFetchFromURL() {
     previewFooter.classList.add("previewFooter");
     const previewing = document.createElement("h4");
     previewing.style.color = "white";
+    previewing.classList.add("preview-text");
     previewing.innerText = `Previewing: ${parameterData.title}`;
     const goBackButton = document.createElement("button");
     goBackButton.classList.add("PreviewingButton");
@@ -57,9 +64,6 @@ export async function SingleListingFetchFromURL() {
     postButton.classList.add("btn-primary");
     postButton.id = "PreviewingButton-POST";
     postButton.innerText = "Post";
-    const successfullyPosted = document.createElement("p");
-    successfullyPosted.classList.add("success");
-    successfullyPosted.innerText = "Success, sending you to your post.";
     postButton.addEventListener("click", () => {
       postListing(parameterData);
       setTimeout(() => {
@@ -71,7 +75,6 @@ export async function SingleListingFetchFromURL() {
         params.delete("media");
         params.delete("endsAt");
         params.set("id", createdPost);
-        previewing.append(successfullyPosted);
       }, 1000);
       setTimeout(() => {
         window.location.href = window.location.pathname + "?" + params;

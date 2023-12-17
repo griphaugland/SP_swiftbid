@@ -1416,6 +1416,7 @@ header .credits-label {
   width: 100%;
   background-color: rgb(13, 35, 53);
   bottom: 0;
+  border-top: 10px solid #6ab060;
 }
 
 .warning {
@@ -1440,6 +1441,70 @@ header .credits-label {
 #profile-error p {
   margin-bottom: 0rem !important;
   color: black !important;
+}
+
+#delete-listing-button {
+  color: rgba(239, 79, 79, 0.953);
+}
+
+#deleteListingPopUpSubmit {
+  background-color: rgba(239, 79, 79, 0.953);
+  border: 0px solid black;
+}
+
+#deleteListingPopUpSubmit:hover {
+  color: black;
+}
+
+.dropdown-postsettings {
+  background-color: #0d2335;
+  transition: all 0.3s ease-in-out;
+  max-width: 40px !important;
+  height: 35px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.dropdown-postsettings a {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-postsettings:hover {
+  outline: 2px solid rgb(155, 193, 230);
+  color: #ffffff !important;
+}
+
+.cursor {
+  cursor: pointer;
+  text-align: start;
+}
+
+#delete-error {
+  display: flex;
+  gap: 0.3rem;
+  padding-inline: 0.3rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: black !important;
+}
+
+.preview-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0rem !important;
+}
+.preview-text p {
+  margin-bottom: 0rem !important;
+}
+
+.red {
+  color: rgba(239, 79, 79, 0.953) !important;
 }
 
 /* $tertiary: #fd6a01; */

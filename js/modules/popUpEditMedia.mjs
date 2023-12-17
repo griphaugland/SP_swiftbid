@@ -50,7 +50,7 @@ export default function popUpEditMedia(data) {
   });
   currentMediaSrc.disabled = "true";
   var MediaModal = new bootstrap.Modal(document.getElementById("MediaPopUp"), {
-    backdrop: "static", // You can set the backdrop option to "static" or "true" if needed.
+    backdrop: "static",
   });
   MediaModal.show();
 }

@@ -4,6 +4,7 @@ import buildLoginPopUp from "./loginPopUp.mjs";
 import isLoggedIn from "./isLoggedIn.mjs";
 import placeBid from "./placeBid.mjs";
 import popUpActionsLogin from "./popUpActions.mjs";
+import { openDeleteListing } from "./deleteListing.mjs";
 
 const container = document.getElementById("listing-container");
 const image = document.getElementById("listing-image");
@@ -200,15 +201,56 @@ export function updateCardWithMedia(item, media, container) {
 
   if (isLoggedIn()) {
     if (getLocalStorageData("name") === item.seller.name) {
-      bidInput.disabled = true;
-      bidButton.disabled = true;
-      bidPlus.disabled = true;
-      bidMinus.disabled = true;
-      bidInput.value = "Your listing";
-      const editListingBtn = document.createElement("button");
+      const postSettings = document.createElement("div");
+
+      postSettings.classList.add("dropdown-postsettings");
+      const dropdownButton = document.createElement("a");
+      dropdownButton.setAttribute("data-bs-toggle", "dropdown");
+      dropdownButton.setAttribute("aria-expanded", "false");
+
+      const moreIcon = document.createElement("img");
+      moreIcon.classList.add("more-icon");
+      moreIcon.src = "../../media/ellipsis-solid.svg";
+      moreIcon.alt = "post settings icon";
+      moreIcon.height = 20;
+      moreIcon.width = 20;
+
+      dropdownButton.appendChild(moreIcon);
+
+      const dropdownMenu = document.createElement("ul");
+      dropdownMenu.classList.add("dropdown-menu");
+
+      const editButtonContainer = document.createElement("li");
+      editButtonContainer.id = "edit-button-container";
+
+      const divider = document.createElement("hr");
+      divider.classList.add("dropdown-divider");
+
+      const deleteListingButton = document.createElement("a");
+      deleteListingButton.classList.add("dropdown-item");
+      deleteListingButton.id = "delete-listing-button";
+      deleteListingButton.innerText = "Delete listing";
+      let postData = {
+        id: item.id,
+        title: item.title,
+      };
+      deleteListingButton.addEventListener("click", () => {
+        openDeleteListing(postData);
+      });
+
+      dropdownMenu.appendChild(editButtonContainer);
+      dropdownMenu.appendChild(divider);
+      dropdownMenu.appendChild(deleteListingButton);
+
+      postSettings.appendChild(dropdownButton);
+      postSettings.appendChild(dropdownMenu);
+
+      const editListingBtn = document.createElement("a");
+      editListingBtn.classList.add("dropdown-item");
+      editListingBtn.classList.add("cursor");
       editListingBtn.innerText = "Edit listing";
-      editListingBtn.classList.add("btn");
-      editListingBtn.classList.add("btn-outline-secondary");
+      editButtonContainer.appendChild(editListingBtn);
+
       editListingBtn.addEventListener("click", () => {
         let tagString = item.tags.join(",");
         let mediaString = item.media.join(",");
@@ -222,9 +264,9 @@ export function updateCardWithMedia(item, media, container) {
         sessionStorage.setItem("editListingID", item.id);
         window.location.href = "/profile/" + "?" + params;
       });
-      if (params.has("preview")) {
-      } else {
-        listingTitle.append(editListingBtn);
+
+      if (!params.has("preview")) {
+        listingTitle.appendChild(postSettings);
       }
     } else {
       const currentCredits = getLocalStorageData("credits");

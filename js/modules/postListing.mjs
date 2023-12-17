@@ -11,7 +11,6 @@ export default async function postListing(data) {
     media: data.media,
     endsAt: data.endsAt,
   };
-  console.log(post);
   const res = await fetch(url, {
     method: `POST`,
     headers: {
@@ -22,6 +21,14 @@ export default async function postListing(data) {
   });
   console.log(res);
   const responseData = await res.json();
-  sessionStorage.setItem("postID", responseData.id);
+  const feedback = document.querySelector(".preview-text");
+  if (res.ok) {
+    feedback.innerHTML = `<img height="20" width="20" alt="sucess icon" src="../../media/circle-check-regular.svg"> <p class='green'>Sucessfully posted listing</p>`;
+    setTimeout(() => {
+      sessionStorage.setItem("postID", responseData.id);
+    }, 500);
+  } else {
+    feedback.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class='red'>${res.statusText}</p>`;
+  }
   console.log(responseData);
 }

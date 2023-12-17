@@ -85,12 +85,23 @@ export default function openCreateListing() {
     modalHeader.append(modalHeaderLoader);
     setTimeout(() => {
       const localStorageData = getLocalStorageData("all");
+      let mediaParam = params.get("media");
+      let mediaArray;
+      if (mediaParam && mediaParam !== "") {
+        mediaArray = mediaParam.split(",");
+      } else {
+        mediaArray = [];
+      }
+      let tagsValue = params.get("tags").split(",");
+      if (tagsValue.length === 1 && tagsValue[0] === "") {
+        tagsValue = [];
+      }
       tagArr = [];
       let parameterData = {
         title: params.get("title"),
         description: params.get("description") || "",
-        tags: params.get("tags").split(",") || [],
-        media: params.get("media").split(","),
+        tags: tagsValue,
+        media: mediaArray,
         endsAt: params.get("endsAt"),
         _count: {},
         bids: [],
@@ -116,7 +127,22 @@ export default function openCreateListing() {
         tagValueLI.id = `${count++}-tag`;
         tagUl.append(tagValueLI);
         tagArr.push(item);
+        let tagValueItems = document.querySelectorAll(".tag-value");
+        tagCounter.innerText = `Added tags (${tagArr.length}):`;
+        tagValueItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            const tagToRemove = item.querySelector(".tag-value-text").innerText;
+            const indexToRemove = tagArr.indexOf(tagToRemove);
+            if (indexToRemove !== -1) {
+              tagArr.splice(indexToRemove, 1);
+            }
+            item.remove();
+            tagCounter.innerText = `Added tags (${tagArr.length}):`;
+          });
+        });
+        tagInput.value = "";
       });
+      tagCounter.innerText = `Added tags (${tagArr.length}):`;
       mediaUrlInput.value = parameterData.media;
       dateFeedback.innerHTML =
         '<p class="response-text-create warning">Please input date again</p>';
@@ -124,7 +150,6 @@ export default function openCreateListing() {
     }, 1000);
     handleMediaUrlInput();
   }
-
   if (tagUl.children.length === 0) {
     tagUl.append(noTagswarning);
   } else {
@@ -199,7 +224,7 @@ export default function openCreateListing() {
     const mediaResponseText = document.getElementById("#valid-image");
     let title;
     let description;
-    let tags = true;
+    let tags;
     let media;
     let date;
     let mediaArr = [];
@@ -215,15 +240,16 @@ export default function openCreateListing() {
     } else {
       description = true;
     }
+    if (tagInput.value.length > 0) {
+      tags = false;
+      tagFeedback.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class="response-text-create">Submit your tags before proceeding</p>`;
+    } else {
+      tags = true;
+      titleFeedback.innerHTML = ``;
+    }
     if (mediaIsValid) {
       media = true;
       mediaArr.push(mediaUrlInput.value);
-      let sendingMedia;
-      if (mediaArr.length > 1) {
-        sendingMedia = mediaArr;
-      } else {
-        sendingMedia = mediaUrlInput.value;
-      }
     } else if (mediaUrlInput.value === "") {
       media = true;
     } else {

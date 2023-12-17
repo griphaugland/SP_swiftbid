@@ -22,11 +22,9 @@ export default async function postListing(data) {
   console.log(res);
   const responseData = await res.json();
   const feedback = document.querySelector(".preview-text");
+  sessionStorage.setItem("postID", responseData.id);
   if (res.ok) {
     feedback.innerHTML = `<img height="20" width="20" alt="sucess icon" src="../../media/circle-check-regular.svg"> <p class='green'>Sucessfully posted listing</p>`;
-    setTimeout(() => {
-      sessionStorage.setItem("postID", responseData.id);
-    }, 500);
   } else {
     feedback.innerHTML = `<img height="20" width="20" alt="error icon" src="../../media/circle-exclamation-solid.svg"><p class='red'>${res.statusText}</p>`;
   }

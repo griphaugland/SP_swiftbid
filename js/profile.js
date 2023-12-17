@@ -10,7 +10,7 @@ import updateMedia from "./modules/updateMedia.mjs";
 import isLoggedIn from "./modules/isLoggedIn.mjs";
 import openCreateListing from "./modules/openCreateListing.mjs";
 import openEditListing from "./modules/openEditListing.mjs";
-
+import getProfileListings from "./modules/getProfileListings.mjs";
 // Variables
 const container = document.getElementById("winnings-container");
 const usernameContainer = document.querySelector(".profile-username");
@@ -20,6 +20,9 @@ const winsNumber = document.getElementById("info-wins");
 const profileImage = document.getElementById("profile-image");
 const profileImageContainer = document.querySelector(
   ".profile-image-container"
+);
+const userListingsContainer = document.getElementById(
+  "profile-listings-container"
 );
 const mediaForm = document.getElementById("media-form");
 const profileButton = document.querySelector(".button-invisible");
@@ -65,6 +68,30 @@ if (isLoggedIn()) {
     let usernameText = `@${content.name}`;
     usernameContainer.prepend(usernameText);
     listingsNumber.innerText = content._count.listings;
+    const viewUsersPosts = document.getElementById("view-users-listings");
+    const viewWonPosts = document.getElementById("view-won-listings");
+    viewUsersPosts.addEventListener("click", () => {
+      console.log("Users posts");
+      if (viewWonPosts.classList.contains("active")) {
+        container.style.display = "none";
+        userListingsContainer.style.display = "grid";
+        viewWonPosts.classList.remove("active");
+        viewUsersPosts.classList.add("active");
+      } else {
+        viewUsersPosts.classList.add("active");
+      }
+    });
+    viewWonPosts.addEventListener("click", () => {
+      console.log("Won posts");
+      if (viewUsersPosts.classList.contains("active")) {
+        userListingsContainer.style.display = "none";
+        container.style.display = "grid";
+        viewUsersPosts.classList.remove("active");
+        viewWonPosts.classList.add("active");
+      } else {
+        viewWonPosts.classList.add("active");
+      }
+    });
     winsNumber.innerText = content.wins.length;
     const winCards = await createWinsCards(content.wins);
     async function renderWins() {
@@ -77,8 +104,20 @@ if (isLoggedIn()) {
         container.innerHTML = '<h2 class="no-results">No wins found</h2>';
       }
     }
-
+    const userListings = await getProfileListings();
+    async function renderUserListing() {
+      userListingsContainer.innerHTML = "";
+      if (userListings && userListings.length > 0) {
+        userListings.forEach((item) => {
+          renderCard(item, userListingsContainer);
+        });
+      } else {
+        userListingsContainer.innerHTML =
+          '<h2 class="no-results">No wins found</h2>';
+      }
+    }
     renderWins();
+    renderUserListing();
   }
   userDescriptionContainer.innerHTML = "";
   userDescriptionContainer.innerHTML = `<div class='joke-container'><span>${joke.setup}</span><span>${joke.punchline}</span></div>`;

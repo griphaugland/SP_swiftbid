@@ -15,7 +15,9 @@ export default async function deleteListing(id) {
   const feedback = document.querySelector("#delete-error");
   feedback.innerHTML = `<img height="20" width="20" alt="sucess icon" src="../../media/circle-check-regular.svg"> <p class='green'>Deleted listing</p>`;
   setTimeout(() => {
-    window.location.href = "/listings/" + "?" + params;
+    params.delete("id");
+    params.add("user", getLocalStorageData("name"));
+    window.location.href = "/profile/" + "?" + params;
   }, 1000);
 }
 

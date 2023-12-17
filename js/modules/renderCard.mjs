@@ -142,7 +142,7 @@ export function updateCardWithMedia(item, media, container) {
   const bidButton = document.createElement("a");
   bidButton.id = "card-bid-button";
   bidButton.href = `../listings/listing/?id=${item.id}`;
-  bidButton.innerHTML = "<p>BID</p>";
+  bidButton.innerHTML = "<p>View</p>";
 
   textContainer.appendChild(bidButton);
 

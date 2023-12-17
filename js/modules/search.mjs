@@ -6,7 +6,6 @@ import { startLoading, stopLoading } from "./loader.mjs";
 export default function initializeSearch() {
   triggerSearchFromURL();
 }
-
 const searchForm = document.getElementById("search-form");
 const searchInput = document.getElementById("search-input");
 
@@ -27,8 +26,8 @@ function triggerSearchFromURL() {
   let params = new URLSearchParams(window.location.search);
   const searchInput = document.getElementById("search-input");
   if (params.has("search")) {
-    let searchValue = params.get("search");
-    searchInput.value = searchValue; // Use value for input fields
+    let searchValue = params.get("search").toLowerCase();
+    searchInput.value = searchValue;
     renderSearchResults(searchValue);
     const pagination = document.querySelector(".pagination");
     pagination.style.display = "none";

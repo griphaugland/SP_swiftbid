@@ -1,7 +1,6 @@
 import getLocalStorageData from "./localStorage.mjs";
-export default async function getProfileListings() {
+export default async function getProfileListings(name) {
   const token = getLocalStorageData("accessToken");
-  const name = getLocalStorageData("name");
   let params = new URLSearchParams(window.location.search);
   let url;
   if (params.has("offset")) {
@@ -20,9 +19,8 @@ export default async function getProfileListings() {
   return data;
 }
 
-export async function getBidListings() {
+export async function getBidListings(name) {
   const token = getLocalStorageData("accessToken");
-  const name = getLocalStorageData("name");
   let params = new URLSearchParams(window.location.search);
   let url;
   if (params.has("offset")) {

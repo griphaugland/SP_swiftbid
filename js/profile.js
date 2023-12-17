@@ -122,7 +122,7 @@ if (isLoggedIn()) {
         container.innerHTML = '<h2 class="no-results">No wins found</h2>';
       }
     }
-    const userListings = await getProfileListings();
+    const userListings = await getProfileListings(params.get("user"));
     async function renderUserListing() {
       userListingsContainer.innerHTML = "";
       if (userListings && userListings.length > 0) {
@@ -134,7 +134,7 @@ if (isLoggedIn()) {
           '<h2 class="no-results">No listings found</h2>';
       }
     }
-    const listingsBidOn = await getBidListings();
+    const listingsBidOn = await getBidListings(params.get("user"));
     let listingBidOnArr = [];
     listingsBidOn.map((item) => listingBidOnArr.push(item.listing.id));
     const userBids = await createWinsCards(listingBidOnArr);

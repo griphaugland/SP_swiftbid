@@ -1,5 +1,7 @@
 ## sp_swiftbid - Semester Project Auction House
 
+![Project Logo](./media/swift-bid-logo-blue.png)
+
 ### Project Overview
 
 Welcome to the `sp_swiftbid` project! This project is an auction house platform designed for a semester project. Built with modern web technologies like Bootstrap, SASS, PostCSS, JavaScript, HTML, and CSS, it offers a rich and interactive user experience.
